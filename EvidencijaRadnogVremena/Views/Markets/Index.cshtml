@@ -1,13 +1,13 @@
-﻿@model IEnumerable<EvidencijaRadnogVremena.Models.Objekat>
+﻿@model IEnumerable<EvidencijaRadnogVremena.Models.Market>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Spisak marketa</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Dodaj novi market", "Create")
 </p>
 <table class="table">
     <tr>
@@ -29,9 +29,9 @@
             @Html.DisplayFor(modelItem => item.Naziv)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SifraObjekta }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SifraObjekta }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SifraObjekta })
+            @Html.ActionLink("Uredi", "Edit", new { id=item.SifraMarketa }) |
+            @Html.ActionLink("Detalji", "Details", new { id=item.SifraMarketa }) |
+            @Html.ActionLink("Obriši", "Delete", new { id=item.SifraMarketa })
         </td>
     </tr>
 }

@@ -10,107 +10,107 @@ using EvidencijaRadnogVremena.Models;
 
 namespace EvidencijaRadnogVremena.Controllers
 {
-    public class ObjekatsController : Controller
+    public class MarketsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Objekats
+        // GET: Markets
         public ActionResult Index()
         {
-            return View(db.Objekats.ToList());
+            return View(db.Markets.ToList());
         }
 
-        // GET: Objekats/Details/5
+        // GET: Markets/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Objekat objekat = db.Objekats.Find(id);
-            if (objekat == null)
+            Market market = db.Markets.Find(id);
+            if (market == null)
             {
                 return HttpNotFound();
             }
-            return View(objekat);
+            return View(market);
         }
 
-        // GET: Objekats/Create
+        // GET: Markets/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Objekats/Create
+        // POST: Markets/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SifraObjekta,Adresa,Naziv")] Objekat objekat)
+        public ActionResult Create([Bind(Include = "SifraMarketa,Adresa,Naziv")] Market market)
         {
             if (ModelState.IsValid)
             {
-                db.Objekats.Add(objekat);
+                db.Markets.Add(market);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(objekat);
+            return View(market);
         }
 
-        // GET: Objekats/Edit/5
+        // GET: Markets/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Objekat objekat = db.Objekats.Find(id);
-            if (objekat == null)
+            Market market = db.Markets.Find(id);
+            if (market == null)
             {
                 return HttpNotFound();
             }
-            return View(objekat);
+            return View(market);
         }
 
-        // POST: Objekats/Edit/5
+        // POST: Markets/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SifraObjekta,Adresa,Naziv")] Objekat objekat)
+        public ActionResult Edit([Bind(Include = "SifraMarketa,Adresa,Naziv")] Market market)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(objekat).State = EntityState.Modified;
+                db.Entry(market).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(objekat);
+            return View(market);
         }
 
-        // GET: Objekats/Delete/5
+        // GET: Markets/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Objekat objekat = db.Objekats.Find(id);
-            if (objekat == null)
+            Market market = db.Markets.Find(id);
+            if (market == null)
             {
                 return HttpNotFound();
             }
-            return View(objekat);
+            return View(market);
         }
 
-        // POST: Objekats/Delete/5
+        // POST: Markets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Objekat objekat = db.Objekats.Find(id);
-            db.Objekats.Remove(objekat);
+            Market market = db.Markets.Find(id);
+            db.Markets.Remove(market);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,13 +1,13 @@
-﻿@model EvidencijaRadnogVremena.Models.Objekat
+﻿@model EvidencijaRadnogVremena.Models.Market
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Market: @Model.Naziv</h2>
 
 <div>
-    <h4>Objekat</h4>
+    <h4>Market</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -26,9 +26,17 @@
             @Html.DisplayFor(model => model.Naziv)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Napomena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Napomena)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SifraObjekta }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SifraMarketa }) |
+    @Html.ActionLink("Povratak na listu", "Index")
 </p>

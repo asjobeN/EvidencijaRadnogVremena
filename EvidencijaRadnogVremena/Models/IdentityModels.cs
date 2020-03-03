@@ -30,6 +30,6 @@ namespace EvidencijaRadnogVremena.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<EvidencijaRadnogVremena.Models.Objekat> Objekats { get; set; }
+        public System.Data.Entity.DbSet<EvidencijaRadnogVremena.Models.Market> Markets { get; set; }
     }
 }

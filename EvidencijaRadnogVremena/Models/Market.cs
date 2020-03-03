@@ -7,14 +7,16 @@ using System.Web;
 
 namespace EvidencijaRadnogVremena.Models
 {
-    public class Objekat
+    public class Market
     {
         [Key]
-        [DisplayName("Šifra Objekta")]
-        public string SifraObjekta { get; set; }
+        [DisplayName("Šifra Marketa")]
+        public string SifraMarketa { get; set; }
 
         public string Adresa { get; set; }
 
         public string Naziv { get; set; }
+
+        public string Napomena { get; set; }
     }
 }

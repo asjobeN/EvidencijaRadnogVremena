@@ -177,14 +177,23 @@
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ObjekatsController.cs" />
+    <Compile Include="Controllers\MarketsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003031643435_InitialCreate.cs" />
+    <Compile Include="Migrations\202003031643435_InitialCreate.designer.cs">
+      <DependentUpon>202003031643435_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003031717341_market-dodavanje-napomene.cs" />
+    <Compile Include="Migrations\202003031717341_market-dodavanje-napomene.designer.cs">
+      <DependentUpon>202003031717341_market-dodavanje-napomene.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Objekat.cs" />
+    <Compile Include="Models\Market.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -337,12 +346,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Objekats\Create.cshtml" />
-    <Content Include="Views\Objekats\Delete.cshtml" />
-    <Content Include="Views\Objekats\Details.cshtml" />
-    <Content Include="Views\Objekats\Edit.cshtml" />
-    <Content Include="Views\Objekats\Index.cshtml" />
-    <Content Include="Views\Home\Objekats.cshtml" />
+    <Content Include="Views\Markets\Create.cshtml" />
+    <Content Include="Views\Markets\Delete.cshtml" />
+    <Content Include="Views\Markets\Details.cshtml" />
+    <Content Include="Views\Markets\Edit.cshtml" />
+    <Content Include="Views\Markets\Index.cshtml" />
+    <Content Include="Views\Home\Markets.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.js.flow" />
@@ -368,6 +377,14 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202003031643435_InitialCreate.resx">
+      <DependentUpon>202003031643435_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003031717341_market-dodavanje-napomene.resx">
+      <DependentUpon>202003031717341_market-dodavanje-napomene.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
