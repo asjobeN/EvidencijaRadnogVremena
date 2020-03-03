@@ -26,5 +26,12 @@ namespace EvidencijaRadnogVremena.Controllers
 
             return View();
         }
+
+        public ActionResult Objekats()
+        {
+            ViewBag.Message = "Lista objekata";
+
+            return View();
+        }
     }
 }
