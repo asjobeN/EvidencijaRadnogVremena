@@ -27,9 +27,9 @@ namespace EvidencijaRadnogVremena.Controllers
             return View();
         }
 
-        public ActionResult Objekats()
+        public ActionResult Markets()
         {
-            ViewBag.Message = "Lista objekata";
+            ViewBag.Message = "Lista marketa";
 
             return View();
         }
