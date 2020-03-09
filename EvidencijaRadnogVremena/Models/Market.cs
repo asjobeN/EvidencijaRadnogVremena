@@ -23,7 +23,6 @@ namespace EvidencijaRadnogVremena.Models
         public virtual List<Radnik> Radnici { get; set; }
 
 
-
         public DateTime PonedeljakPocetakRadnogVremena { get; set; }
 
         public DateTime PonedeljakKrajRadnogVremena { get; set; }
