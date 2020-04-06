@@ -20,7 +20,7 @@ namespace EvidencijaRadnogVremena.Models
 
         public string Naziv { get; set; }
 
-        public virtual List<Radnik> Radnici { get; set; }
+        public virtual List<Worker> Radnici { get; set; }
 
 
         public DateTime PonedeljakPocetakRadnogVremena { get; set; }

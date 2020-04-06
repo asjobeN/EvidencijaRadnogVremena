@@ -1,13 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel;
 
 namespace EvidencijaRadnogVremena.Enums
 {
     public enum UlogaEnum
     {
+        [Description("Radnik")]
         Radnik = 0,
-        Admin = 2
+
+        [Description("Menadžer marketa")]
+        MenadzerMarketa = 1,
+
+        [Description("Administrator")]
+        Administrator = 2
+    }
+
+    public enum TipRadaEnum
+    {
+        Neradi,
+        Radi,
+        Odmor,
+        Bolovanje,
+        Zamena,
+        Ostalo
     }
 }

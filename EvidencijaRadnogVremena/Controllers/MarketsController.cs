@@ -17,7 +17,7 @@ namespace EvidencijaRadnogVremena.Controllers
         // GET: Markets
         public ActionResult Index()
         {
-            return View(db.Marketi.ToList());
+            return View(db.Markets.ToList());
         }
 
         // GET: Markets/Details/5
@@ -27,7 +27,7 @@ namespace EvidencijaRadnogVremena.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Market market = db.Marketi.Find(id);
+            Market market = db.Markets.Find(id);
             if (market == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace EvidencijaRadnogVremena.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Marketi.Add(market);
+                db.Markets.Add(market);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace EvidencijaRadnogVremena.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Market market = db.Marketi.Find(id);
+            Market market = db.Markets.Find(id);
             if (market == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace EvidencijaRadnogVremena.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Market market = db.Marketi.Find(id);
+            Market market = db.Markets.Find(id);
             if (market == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace EvidencijaRadnogVremena.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Market market = db.Marketi.Find(id);
-            db.Marketi.Remove(market);
+            Market market = db.Markets.Find(id);
+            db.Markets.Remove(market);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
