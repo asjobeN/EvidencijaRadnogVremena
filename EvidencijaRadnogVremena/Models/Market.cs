@@ -55,6 +55,7 @@ namespace EvidencijaRadnogVremena.Models
 
         public TimeSpan? NedeljaPocetakRadnogVremena { get; set; }
 
+        public TimeSpan? NedeljaKrajRadnogVremena { get; set; }
 
     }
 }

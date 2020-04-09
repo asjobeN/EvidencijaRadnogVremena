@@ -262,6 +262,10 @@
     <Compile Include="Migrations\202004092152334_initial.designer.cs">
       <DependentUpon>202004092152334_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004092212081_Marketi.cs" />
+    <Compile Include="Migrations\202004092212081_Marketi.designer.cs">
+      <DependentUpon>202004092212081_Marketi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BusinessAction.cs" />
@@ -478,6 +482,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202004092152334_initial.resx">
       <DependentUpon>202004092152334_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004092212081_Marketi.resx">
+      <DependentUpon>202004092212081_Marketi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
