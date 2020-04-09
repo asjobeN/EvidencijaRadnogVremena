@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class InitialModel : DbMigration
     {
         public override void Up()
         {
@@ -15,25 +15,25 @@
                         SifraMarketa = c.String(),
                         Adresa = c.String(),
                         Naziv = c.String(),
-                        PonedeljakPocetakRadnogVremena = c.DateTime(nullable: false),
-                        PonedeljakKrajRadnogVremena = c.DateTime(nullable: false),
-                        UtorakPocetakRadnogVremena = c.DateTime(nullable: false),
-                        UtorakKrajRadnogVremena = c.DateTime(nullable: false),
-                        SredaPocetakRadnogVremena = c.DateTime(nullable: false),
-                        SredaKrajRadnogVremena = c.DateTime(nullable: false),
-                        CetvrtakPocetakRadnogVremena = c.DateTime(nullable: false),
-                        CetvrtakKrajRadnogVremena = c.DateTime(nullable: false),
-                        PetakPocetakRadnogVremena = c.DateTime(nullable: false),
-                        PetakKrajRadnogVremena = c.DateTime(nullable: false),
-                        SubotaPocetakRadnogVremena = c.DateTime(nullable: false),
-                        SubotaKrajRadnogVremena = c.DateTime(nullable: false),
-                        NedeljaPocetakRadnogVremena = c.DateTime(nullable: false),
-                        NedeljaKrajRadnogVremena = c.DateTime(nullable: false),
+                        PonedeljakPocetakRadnogVremena = c.Time(nullable: false, precision: 7),
+                        PonedeljakKrajRadnogVremena = c.Time(nullable: false, precision: 7),
+                        UtorakPocetakRadnogVremena = c.Time(nullable: false, precision: 7),
+                        UtorakKrajRadnogVremena = c.Time(nullable: false, precision: 7),
+                        SredaPocetakRadnogVremena = c.Time(nullable: false, precision: 7),
+                        SredaKrajRadnogVremena = c.Time(nullable: false, precision: 7),
+                        CetvrtakPocetakRadnogVremena = c.Time(nullable: false, precision: 7),
+                        CetvrtakKrajRadnogVremena = c.Time(nullable: false, precision: 7),
+                        PetakPocetakRadnogVremena = c.Time(nullable: false, precision: 7),
+                        PetakKrajRadnogVremena = c.Time(nullable: false, precision: 7),
+                        SubotaPocetakRadnogVremena = c.Time(nullable: false, precision: 7),
+                        SubotaKrajRadnogVremena = c.Time(nullable: false, precision: 7),
+                        NedeljaPocetakRadnogVremena = c.Time(precision: 7),
+                        NedeljaKrajRadnogVremena = c.Time(precision: 7),
                     })
                 .PrimaryKey(t => t.MarketId);
             
             CreateTable(
-                "dbo.Radniks",
+                "dbo.Workers",
                 c => new
                     {
                         RadnikId = c.Int(nullable: false, identity: true),
@@ -122,20 +122,20 @@
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Radniks", "MarketId", "dbo.Markets");
+            DropForeignKey("dbo.Workers", "MarketId", "dbo.Markets");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Radniks", new[] { "MarketId" });
+            DropIndex("dbo.Workers", new[] { "MarketId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Radniks");
+            DropTable("dbo.Workers");
             DropTable("dbo.Markets");
         }
     }

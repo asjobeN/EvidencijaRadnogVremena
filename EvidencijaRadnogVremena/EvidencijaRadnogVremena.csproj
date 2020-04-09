@@ -449,7 +449,6 @@
     <Content Include="Views\Objekats\Details.cshtml" />
     <Content Include="Views\Objekats\Edit.cshtml" />
     <Content Include="Views\Objekats\Index.cshtml" />
-    <Content Include="Views\Home\Objekats.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.js.flow" />
@@ -466,6 +465,12 @@
     <Content Include="Views\Markets\Edit.cshtml" />
     <Content Include="Views\Markets\Index.cshtml" />
     <Content Include="Views\Home\_Partial.cshtml" />
+    <Content Include="Views\Workers\Create.cshtml" />
+    <Content Include="Views\Workers\Delete.cshtml" />
+    <Content Include="Views\Workers\Details.cshtml" />
+    <Content Include="Views\Workers\Edit.cshtml" />
+    <Content Include="Views\Workers\Index.cshtml" />
+    <Content Include="Views\Home\Markets.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
