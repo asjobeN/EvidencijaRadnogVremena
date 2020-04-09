@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace EvidencijaRadnogVremena.Models
 {
@@ -22,33 +19,45 @@ namespace EvidencijaRadnogVremena.Models
 
         public virtual List<Worker> Radnici { get; set; }
 
+        [Required(ErrorMessage = "Nedostaje pоčetak radnog vremena")]
+        public TimeSpan PonedeljakPocetakRadnogVremena { get; set; }
 
-        public DateTime PonedeljakPocetakRadnogVremena { get; set; }
+        [Required(ErrorMessage = "Nedostaje kraj radnog vremena")]
+        public TimeSpan PonedeljakKrajRadnogVremena { get; set; }
 
-        public DateTime PonedeljakKrajRadnogVremena { get; set; }
+        [DataType(DataType.Time)]
+        [Required(ErrorMessage = "Nedostaje pоčetak radnog vremena")]
+        public TimeSpan UtorakPocetakRadnogVremena { get; set; }
 
-        public DateTime UtorakPocetakRadnogVremena { get; set; }
+        [Required(ErrorMessage = "Nedostaje kraj radnog vremena")]
+        public TimeSpan UtorakKrajRadnogVremena { get; set; }
 
-        public DateTime UtorakKrajRadnogVremena { get; set; }
+        [Required(ErrorMessage = "Nedostaje pоčetak radnog vremena")]
+        public TimeSpan SredaPocetakRadnogVremena { get; set; }
 
-        public DateTime SredaPocetakRadnogVremena { get; set; }
+        [Required(ErrorMessage = "Nedostaje kraj radnog vremena")]
+        public TimeSpan SredaKrajRadnogVremena { get; set; }
 
-        public DateTime SredaKrajRadnogVremena { get; set; }
+        [Required(ErrorMessage = "Nedostaje pоčetak radnog vremena")]
+        public TimeSpan CetvrtakPocetakRadnogVremena { get; set; }
 
-        public DateTime CetvrtakPocetakRadnogVremena { get; set; }
+        [Required(ErrorMessage = "Nedostaje kraj radnog vremena")]
+        public TimeSpan CetvrtakKrajRadnogVremena { get; set; }
 
-        public DateTime CetvrtakKrajRadnogVremena { get; set; }
+        [Required(ErrorMessage = "Nedostaje pоčetak radnog vremena")]
+        public TimeSpan PetakPocetakRadnogVremena { get; set; }
 
-        public DateTime PetakPocetakRadnogVremena { get; set; }
+        [Required(ErrorMessage = "Nedostaje kraj radnog vremena")]
+        public TimeSpan PetakKrajRadnogVremena { get; set; }
 
-        public DateTime PetakKrajRadnogVremena { get; set; }
+        [Required(ErrorMessage = "Nedostaje pоčetak radnog vremena")]
+        public TimeSpan? SubotaPocetakRadnogVremena { get; set; }
 
-        public DateTime SubotaPocetakRadnogVremena { get; set; }
+        [Required(ErrorMessage = "Nedostaje kraj radnog vremena")]
+        public TimeSpan? SubotaKrajRadnogVremena { get; set; }
 
-        public DateTime SubotaKrajRadnogVremena { get; set; }
+        public TimeSpan? NedeljaPocetakRadnogVremena { get; set; }
 
-        public DateTime NedeljaPocetakRadnogVremena { get; set; }
-
-        public DateTime NedeljaKrajRadnogVremena { get; set; }
+        public TimeSpan? NedeljaKrajRadnogVremena { get; set; }
     }
 }

@@ -7,13 +7,13 @@ namespace EvidencijaRadnogVremena.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class InitialModel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialModel));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003031643435_InitialCreate"; }
+            get { return "202004092027332_InitialModel"; }
         }
         
         string IMigrationMetadata.Source

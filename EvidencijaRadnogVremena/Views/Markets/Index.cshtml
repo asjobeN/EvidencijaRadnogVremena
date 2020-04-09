@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Spisak marketa</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Dodaj novi market", "Create", "", new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -120,9 +120,9 @@
             @Html.DisplayFor(modelItem => item.NedeljaKrajRadnogVremena)
         </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MarketId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MarketId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MarketId })
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.MarketId }) |
+            @Html.ActionLink("Detalji", "Details", new { id=item.MarketId }) |
+            @Html.ActionLink("Obriši", "Delete", new { id=item.MarketId })
         </td>
     </tr>
 }

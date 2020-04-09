@@ -183,17 +183,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003021708221_InitialCreate.cs" />
-    <Compile Include="Migrations\202003021708221_InitialCreate.designer.cs">
-      <DependentUpon>202003021708221_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003060853052_Marketi.cs" />
-    <Compile Include="Migrations\202003060853052_Marketi.designer.cs">
-      <DependentUpon>202003060853052_Marketi.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004062031387_renameWorkers.cs" />
-    <Compile Include="Migrations\202004062031387_renameWorkers.designer.cs">
-      <DependentUpon>202004062031387_renameWorkers.cs</DependentUpon>
+    <Compile Include="Migrations\202004092027332_InitialModel.cs" />
+    <Compile Include="Migrations\202004092027332_InitialModel.designer.cs">
+      <DependentUpon>202004092027332_InitialModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -399,14 +391,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003021708221_InitialCreate.resx">
-      <DependentUpon>202003021708221_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003060853052_Marketi.resx">
-      <DependentUpon>202003060853052_Marketi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004062031387_renameWorkers.resx">
-      <DependentUpon>202004062031387_renameWorkers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004092027332_InitialModel.resx">
+      <DependentUpon>202004092027332_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
