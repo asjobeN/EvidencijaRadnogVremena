@@ -22,11 +22,11 @@ namespace EvidencijaRadnogVremena.BusinessLogic
                     .FirstOrDefault(x => x.Username == user.Identity.Name);
                 if (StoreManager != null)
                 {
-                    SetMarketWorkers(StoreManager.Market);
+                    SetMarketRadniks(StoreManager.Market);
                 }
             }
         }
-        public void SetMarketWorkers(Market market)
+        public void SetMarketRadniks(Market market)
         {
             using (var context = new ApplicationDbContext())
             {

@@ -10,14 +10,14 @@ using EvidencijaRadnogVremena.Models;
 
 namespace EvidencijaRadnogVremena.Controllers
 {
-    public class WorkersController : Controller
+    public class RadniksController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Radniks
         public ActionResult Index()
         {
-            var radniks = db.Workers.Include(r => r.Market);
+            var radniks = db.Radniks.Include(r => r.Market);
             return View(radniks.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace EvidencijaRadnogVremena.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Worker radnik = db.Workers.Find(id);
+            Radnik radnik = db.Radniks.Find(id);
             if (radnik == null)
             {
                 return HttpNotFound();
@@ -39,7 +39,7 @@ namespace EvidencijaRadnogVremena.Controllers
         // GET: Radniks/Create
         public ActionResult Create()
         {
-            ViewBag.MarketId = new SelectList(db.Marketi, "MarketId", "SifraMarketa");
+            ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa");
             return View();
         }
 
@@ -48,16 +48,16 @@ namespace EvidencijaRadnogVremena.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RadnikId,SifraRadnika,ImePrezime,MarketId,Uloga")] Worker radnik)
+        public ActionResult Create([Bind(Include = "RadnikId,SifraRadnika,ImePrezime,MarketId,Uloga")] Radnik radnik)
         {
             if (ModelState.IsValid)
             {
-                db.Workers.Add(radnik);
+                db.Radniks.Add(radnik);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MarketId = new SelectList(db.Marketi, "MarketId", "SifraMarketa", radnik.MarketId);
+            ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa", radnik.MarketId);
             return View(radnik);
         }
 
@@ -68,12 +68,12 @@ namespace EvidencijaRadnogVremena.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Worker radnik = db.Workers.Find(id);
+            Radnik radnik = db.Radniks.Find(id);
             if (radnik == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MarketId = new SelectList(db.Marketi, "MarketId", "SifraMarketa", radnik.MarketId);
+            ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa", radnik.MarketId);
             return View(radnik);
         }
 
@@ -82,7 +82,7 @@ namespace EvidencijaRadnogVremena.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RadnikId,SifraRadnika,ImePrezime,MarketId,Uloga")] Worker radnik)
+        public ActionResult Edit([Bind(Include = "RadnikId,SifraRadnika,ImePrezime,MarketId,Uloga")] Radnik radnik)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace EvidencijaRadnogVremena.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MarketId = new SelectList(db.Marketi, "MarketId", "SifraMarketa", radnik.MarketId);
+            ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa", radnik.MarketId);
             return View(radnik);
         }
 
@@ -101,7 +101,7 @@ namespace EvidencijaRadnogVremena.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Worker radnik = db.Workers.Find(id);
+            Radnik radnik = db.Radniks.Find(id);
             if (radnik == null)
             {
                 return HttpNotFound();
@@ -114,8 +114,8 @@ namespace EvidencijaRadnogVremena.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Worker radnik = db.Workers.Find(id);
-            db.Workers.Remove(radnik);
+            Radnik radnik = db.Radniks.Find(id);
+            db.Radniks.Remove(radnik);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -7,7 +7,7 @@ using System.Web;
 
 namespace EvidencijaRadnogVremena.Models
 {
-    public class Worker
+    public class Radnik
     {
         [Key]
         public int RadnikId { get; set; }

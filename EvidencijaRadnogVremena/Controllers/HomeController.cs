@@ -57,7 +57,7 @@ namespace EvidencijaRadnogVremena.Controllers
                 try
                 {
                     System.Threading.Thread.Sleep(2000);
-                    var resultCheckUser = WorkerManager.CheckPassword(model);
+                    var resultCheckUser = RadnikManager.CheckPassword(model);
                     if (!resultCheckUser.Success)
                     {
                         model.IsValid = false;
@@ -65,7 +65,7 @@ namespace EvidencijaRadnogVremena.Controllers
                         return Json(model, JsonRequestBehavior.AllowGet);
                     }
 
-                    var result = WorkerManager.GoToBrake(model);
+                    var result = RadnikManager.GoToBrake(model);
                     model.IsValid = true;
                     if (!result.Success)
                     {
@@ -90,7 +90,7 @@ namespace EvidencijaRadnogVremena.Controllers
                 try
                 {
                     System.Threading.Thread.Sleep(2000);
-                    var resultCheckUser = WorkerManager.CheckPassword(model);
+                    var resultCheckUser = RadnikManager.CheckPassword(model);
                     if (!resultCheckUser.Success)
                     {
                         model.IsValid = false;
@@ -98,7 +98,7 @@ namespace EvidencijaRadnogVremena.Controllers
                         return Json(model, JsonRequestBehavior.AllowGet);
                     }
                     
-                    var result = WorkerManager.BackFromBreak(model);
+                    var result = RadnikManager.BackFromBreak(model);
                     if (!result.Success)
                     {
                         model.Message = result.Message;
@@ -127,7 +127,7 @@ namespace EvidencijaRadnogVremena.Controllers
                 try
                 {
                     System.Threading.Thread.Sleep(2000);
-                    var resultCheckUser = WorkerManager.CheckPassword(model);
+                    var resultCheckUser = RadnikManager.CheckPassword(model);
                     if (!resultCheckUser.Success)
                     {
                         model.IsValid = false;
@@ -135,7 +135,7 @@ namespace EvidencijaRadnogVremena.Controllers
                         return Json(model, JsonRequestBehavior.AllowGet);
                     }
 
-                    var result = WorkerManager.WorkerCheckOut(model);
+                    var result = RadnikManager.RadnikCheckOut(model);
                     model.IsValid = true;
                     if (!result.Success)
                     {
@@ -161,7 +161,7 @@ namespace EvidencijaRadnogVremena.Controllers
                 try
                 {
                     System.Threading.Thread.Sleep(2000);
-                    var resultCheckUser = WorkerManager.CheckPassword(model);
+                    var resultCheckUser = RadnikManager.CheckPassword(model);
                     if (!resultCheckUser.Success)
                     {
                         model.IsValid = false;
@@ -169,7 +169,7 @@ namespace EvidencijaRadnogVremena.Controllers
                         return Json(model, JsonRequestBehavior.AllowGet);
                     }
 
-                    var result = WorkerManager.WorkerCheckIn(model);
+                    var result = RadnikManager.RadnikCheckIn(model);
                     model.IsValid = true;
                     if (!result.Success)
                     {
@@ -187,7 +187,7 @@ namespace EvidencijaRadnogVremena.Controllers
 
         public class UserViewModel
         {
-            public int WorkerId { set; get; }
+            public int RadnikId { set; get; }
             public string LocalMachine { set; get; }
             public string Password { get; set; }
             public bool IsValid { get; set; }

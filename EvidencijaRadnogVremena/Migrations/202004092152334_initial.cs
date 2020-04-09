@@ -3,10 +3,40 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialModel : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.BusinessActions",
+                c => new
+                    {
+                        BusinessActionId = c.Int(nullable: false, identity: true),
+                        Date = c.DateTime(nullable: false),
+                        RadnikId = c.Int(nullable: false),
+                        TipRada = c.Int(nullable: false),
+                        LocalMachine = c.String(),
+                    })
+                .PrimaryKey(t => t.BusinessActionId)
+                .ForeignKey("dbo.Radniks", t => t.RadnikId, cascadeDelete: true)
+                .Index(t => t.RadnikId);
+            
+            CreateTable(
+                "dbo.Radniks",
+                c => new
+                    {
+                        RadnikId = c.Int(nullable: false, identity: true),
+                        SifraRadnika = c.String(),
+                        ImePrezime = c.String(),
+                        Username = c.String(),
+                        Password = c.String(),
+                        MarketId = c.Int(),
+                        Uloga = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.RadnikId)
+                .ForeignKey("dbo.Markets", t => t.MarketId)
+                .Index(t => t.MarketId);
+            
             CreateTable(
                 "dbo.Markets",
                 c => new
@@ -28,23 +58,8 @@
                         SubotaPocetakRadnogVremena = c.Time(nullable: false, precision: 7),
                         SubotaKrajRadnogVremena = c.Time(nullable: false, precision: 7),
                         NedeljaPocetakRadnogVremena = c.Time(precision: 7),
-                        NedeljaKrajRadnogVremena = c.Time(precision: 7),
                     })
                 .PrimaryKey(t => t.MarketId);
-            
-            CreateTable(
-                "dbo.Workers",
-                c => new
-                    {
-                        RadnikId = c.Int(nullable: false, identity: true),
-                        SifraRadnika = c.String(),
-                        ImePrezime = c.String(),
-                        MarketId = c.Int(nullable: false),
-                        Uloga = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.RadnikId)
-                .ForeignKey("dbo.Markets", t => t.MarketId, cascadeDelete: true)
-                .Index(t => t.MarketId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -122,21 +137,24 @@
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Workers", "MarketId", "dbo.Markets");
+            DropForeignKey("dbo.BusinessActions", "RadnikId", "dbo.Radniks");
+            DropForeignKey("dbo.Radniks", "MarketId", "dbo.Markets");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Workers", new[] { "MarketId" });
+            DropIndex("dbo.Radniks", new[] { "MarketId" });
+            DropIndex("dbo.BusinessActions", new[] { "RadnikId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Workers");
             DropTable("dbo.Markets");
+            DropTable("dbo.Radniks");
+            DropTable("dbo.BusinessActions");
         }
     }
 }

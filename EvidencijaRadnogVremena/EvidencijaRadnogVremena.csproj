@@ -252,27 +252,15 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MarketsController.cs" />
-    <Compile Include="Controllers\RadniksController.cs" />
+    <Compile Include="Controllers\WorkersController.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="BusinessLogic\WorkerManager.cs" />
-    <Compile Include="Migrations\202004071248417_initial.cs" />
-    <Compile Include="Migrations\202004071248417_initial.designer.cs">
-      <DependentUpon>202004071248417_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004081519484_BusinessAction.cs" />
-    <Compile Include="Migrations\202004081519484_BusinessAction.designer.cs">
-      <DependentUpon>202004081519484_BusinessAction.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004081530547_Radnik.cs" />
-    <Compile Include="Migrations\202004081530547_Radnik.designer.cs">
-      <DependentUpon>202004081530547_Radnik.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004082148456_Radnik1.cs" />
-    <Compile Include="Migrations\202004082148456_Radnik1.designer.cs">
-      <DependentUpon>202004082148456_Radnik1.cs</DependentUpon>
+    <Compile Include="Migrations\202004092152334_initial.cs" />
+    <Compile Include="Migrations\202004092152334_initial.designer.cs">
+      <DependentUpon>202004092152334_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -465,11 +453,11 @@
     <Content Include="Views\Markets\Edit.cshtml" />
     <Content Include="Views\Markets\Index.cshtml" />
     <Content Include="Views\Home\_Partial.cshtml" />
-    <Content Include="Views\Workers\Create.cshtml" />
-    <Content Include="Views\Workers\Delete.cshtml" />
-    <Content Include="Views\Workers\Details.cshtml" />
-    <Content Include="Views\Workers\Edit.cshtml" />
-    <Content Include="Views\Workers\Index.cshtml" />
+    <Content Include="Views\Radniks\Create.cshtml" />
+    <Content Include="Views\Radniks\Delete.cshtml" />
+    <Content Include="Views\Radniks\Details.cshtml" />
+    <Content Include="Views\Radniks\Edit.cshtml" />
+    <Content Include="Views\Radniks\Index.cshtml" />
     <Content Include="Views\Home\Markets.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -488,17 +476,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202004071248417_initial.resx">
-      <DependentUpon>202004071248417_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004081519484_BusinessAction.resx">
-      <DependentUpon>202004081519484_BusinessAction.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004081530547_Radnik.resx">
-      <DependentUpon>202004081530547_Radnik.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004082148456_Radnik1.resx">
-      <DependentUpon>202004082148456_Radnik1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004092152334_initial.resx">
+      <DependentUpon>202004092152334_initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>

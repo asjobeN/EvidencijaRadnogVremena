@@ -9,20 +9,20 @@ using System.Web.Mvc;
 
 namespace EvidencijaRadnogVremena.BusinessLogic
 {
-    public class WorkerManager
+    public class RadnikManager
     {
-        public static Result<string> WorkerCheckIn(HomeController.UserViewModel model)
+        public static Result<string> RadnikCheckIn(HomeController.UserViewModel model)
         {
             Result<string> res = new Result<string>();
             using (var context = new ApplicationDbContext())
             {
-                BusinessAction lastAction = context.BusinessActions.AsEnumerable().LastOrDefault(x => x.RadnikId == model.WorkerId
+                BusinessAction lastAction = context.BusinessActions.AsEnumerable().LastOrDefault(x => x.RadnikId == model.RadnikId
                                                                                     && x.Date.Date.ToShortDateString() == DateTime.Now.ToShortDateString());
                 if (lastAction == null)
                 {
                     context.BusinessActions.Add(new BusinessAction()
                     {
-                        RadnikId = model.WorkerId,
+                        RadnikId = model.RadnikId,
                         Date = DateTime.Now,
                         TipRada = Enums.TipRadaEnum.Radi,
                         LocalMachine = model.LocalMachine
@@ -43,13 +43,13 @@ namespace EvidencijaRadnogVremena.BusinessLogic
             Result<string> res = new Result<string>();
             using (var context = new ApplicationDbContext())
             {
-                BusinessAction lastAction = context.BusinessActions.AsEnumerable().LastOrDefault(x => x.RadnikId == model.WorkerId
+                BusinessAction lastAction = context.BusinessActions.AsEnumerable().LastOrDefault(x => x.RadnikId == model.RadnikId
                                                                                     && x.Date.ToShortDateString() == DateTime.Now.ToShortDateString());
                 if (lastAction != null && lastAction.TipRada == Enums.TipRadaEnum.Radi)
                 {
                     context.BusinessActions.Add(new BusinessAction()
                     {
-                        RadnikId = model.WorkerId,
+                        RadnikId = model.RadnikId,
                         Date = DateTime.Now,
                         TipRada = Enums.TipRadaEnum.Pauza,
                         LocalMachine = model.LocalMachine
@@ -63,21 +63,21 @@ namespace EvidencijaRadnogVremena.BusinessLogic
             return res;
         }
 
-        internal static Result<string> WorkerCheckOut(HomeController.UserViewModel model)
+        internal static Result<string> RadnikCheckOut(HomeController.UserViewModel model)
         {
             Result<string> res = new Result<string>();
             using (var context = new ApplicationDbContext())
             {
-                BusinessAction lastActionWorking = context.BusinessActions.AsEnumerable().LastOrDefault(x => x.RadnikId == model.WorkerId
+                BusinessAction lastActionWorking = context.BusinessActions.AsEnumerable().LastOrDefault(x => x.RadnikId == model.RadnikId
                                                                                     && x.Date.Date.ToShortDateString() == DateTime.Now.ToShortDateString()
                                                                                     && x.TipRada == Enums.TipRadaEnum.Radi);
-                BusinessAction lastAction = context.BusinessActions.AsEnumerable().LastOrDefault(x => x.RadnikId == model.WorkerId
+                BusinessAction lastAction = context.BusinessActions.AsEnumerable().LastOrDefault(x => x.RadnikId == model.RadnikId
                                                                                     && x.Date.ToShortDateString() == DateTime.Now.ToShortDateString());
                 if (lastActionWorking != null && lastAction.TipRada != Enums.TipRadaEnum.Neradi)
                 {
                     context.BusinessActions.Add(new BusinessAction()
                     {
-                        RadnikId = model.WorkerId,
+                        RadnikId = model.RadnikId,
                         Date = DateTime.Now,
                         TipRada = Enums.TipRadaEnum.Neradi,
                         LocalMachine = model.LocalMachine
@@ -94,13 +94,13 @@ namespace EvidencijaRadnogVremena.BusinessLogic
             Result<string> res = new Result<string>();
             using (var context = new ApplicationDbContext())
             {
-                BusinessAction lastAction = context.BusinessActions.AsEnumerable().LastOrDefault(x => x.RadnikId == model.WorkerId
+                BusinessAction lastAction = context.BusinessActions.AsEnumerable().LastOrDefault(x => x.RadnikId == model.RadnikId
                                                                                     && x.Date.ToShortDateString() == DateTime.Now.ToShortDateString());
                 if (lastAction != null && lastAction.TipRada == Enums.TipRadaEnum.Pauza)
                 {
                     context.BusinessActions.Add(new BusinessAction()
                     {
-                        RadnikId = model.WorkerId,
+                        RadnikId = model.RadnikId,
                         Date = DateTime.Now,
                         TipRada = Enums.TipRadaEnum.Radi,
                         LocalMachine = model.LocalMachine
@@ -116,7 +116,7 @@ namespace EvidencijaRadnogVremena.BusinessLogic
             Result<string> res = new Result<string>() { Success = true };
             using (var context = new ApplicationDbContext())
             {
-                var radnik = context.Radniks.AsEnumerable().FirstOrDefault(x => x.RadnikId == model.WorkerId);
+                var radnik = context.Radniks.AsEnumerable().FirstOrDefault(x => x.RadnikId == model.RadnikId);
                 if (radnik.Password != model.Password)
                 {
                     res.Success = false;

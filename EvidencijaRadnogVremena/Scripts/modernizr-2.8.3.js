@@ -806,8 +806,8 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
 
-    tests['webworkers'] = function() {
-        return !!window.Worker;
+    tests['webRadniks'] = function() {
+        return !!window.Radnik;
     };
 
 

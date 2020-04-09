@@ -31,7 +31,7 @@ namespace EvidencijaRadnogVremena.Models
         }
 
         public System.Data.Entity.DbSet<EvidencijaRadnogVremena.Models.Radnik> Radniks { get; set; }
-        public System.Data.Entity.DbSet<EvidencijaRadnogVremena.Models.Market> Marketi { get; set; }
+        public System.Data.Entity.DbSet<EvidencijaRadnogVremena.Models.Market> Markets { get; set; }
         public System.Data.Entity.DbSet<EvidencijaRadnogVremena.Models.BusinessAction> BusinessActions { get; set; }
     }
 }
