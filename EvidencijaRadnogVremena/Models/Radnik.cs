@@ -11,20 +11,16 @@ namespace EvidencijaRadnogVremena.Models
     {
         [Key]
         public int RadnikId { get; set; }
-
         [DisplayName("Šifra radnika")]
         public string SifraRadnika { get; set; }
-
         [DisplayName("Ime i prezime")]
         public string ImePrezime { get; set; }
-
+        public string Username { get; set; }
+        public string Password { get; set; }
         [DisplayName("Šifra marketa")]
-        public int MarketId { get; set; }
-
+        public int? MarketId { get; set; }
         public virtual Market Market { get; set; }
-
         public System.Drawing.Color Boja { get; set; }
-
         public Enums.UlogaEnum Uloga { get; set; }
     }
 }

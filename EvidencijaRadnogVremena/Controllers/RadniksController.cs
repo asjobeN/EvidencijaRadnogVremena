@@ -39,7 +39,7 @@ namespace EvidencijaRadnogVremena.Controllers
         // GET: Radniks/Create
         public ActionResult Create()
         {
-            ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa");
+            ViewBag.MarketId = new SelectList(db.Marketi, "MarketId", "SifraMarketa");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace EvidencijaRadnogVremena.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa", radnik.MarketId);
+            ViewBag.MarketId = new SelectList(db.Marketi, "MarketId", "SifraMarketa", radnik.MarketId);
             return View(radnik);
         }
 
@@ -73,7 +73,7 @@ namespace EvidencijaRadnogVremena.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa", radnik.MarketId);
+            ViewBag.MarketId = new SelectList(db.Marketi, "MarketId", "SifraMarketa", radnik.MarketId);
             return View(radnik);
         }
 
@@ -90,7 +90,7 @@ namespace EvidencijaRadnogVremena.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa", radnik.MarketId);
+            ViewBag.MarketId = new SelectList(db.Marketi, "MarketId", "SifraMarketa", radnik.MarketId);
             return View(radnik);
         }
 

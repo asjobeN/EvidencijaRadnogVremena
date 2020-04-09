@@ -70,7 +70,7 @@ namespace EvidencijaRadnogVremena.Controllers
             {
                 return HttpNotFound();
             }
-            return View(market);
+            return View("Create", market);
         }
 
         // POST: Markets/Edit/5
