@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace EvidencijaRadnogVremena.Models
 {
@@ -12,43 +9,73 @@ namespace EvidencijaRadnogVremena.Models
     {
         [Key]
         public int MarketId { get; set; }
-
         [DisplayName("Šifra marketa")]
+        [Required(ErrorMessage = "Nedostaje šifra marketa")]
         public string SifraMarketa { get; set; }
 
+        [Required(ErrorMessage = "Nedostaje adresa marketa")]
         public string Adresa { get; set; }
 
+        [Required(ErrorMessage = "Nedostaje naziv marketa")]
         public string Naziv { get; set; }
+        public virtual List<Radnik> Radnici { get; set; }
+        //public virtual List<RadniDan> RadniDani { get; set; }
 
-        public virtual List<Worker> Radnici { get; set; }
+        [Required(ErrorMessage = "Nedostaje pоčetak radnog vremena")]
+        public TimeSpan PonedeljakPocetakRadnogVremena { get; set; }
 
+        [Required(ErrorMessage = "Nedostaje kraj radnog vremena")]
+        public TimeSpan PonedeljakKrajRadnogVremena { get; set; }
 
-        public DateTime PonedeljakPocetakRadnogVremena { get; set; }
+        [DataType(DataType.Time)]
+        [Required(ErrorMessage = "Nedostaje pоčetak radnog vremena")]
+        public TimeSpan UtorakPocetakRadnogVremena { get; set; }
 
-        public DateTime PonedeljakKrajRadnogVremena { get; set; }
+        [Required(ErrorMessage = "Nedostaje kraj radnog vremena")]
+        public TimeSpan UtorakKrajRadnogVremena { get; set; }
 
-        public DateTime UtorakPocetakRadnogVremena { get; set; }
+        [Required(ErrorMessage = "Nedostaje pоčetak radnog vremena")]
+        public TimeSpan SredaPocetakRadnogVremena { get; set; }
 
-        public DateTime UtorakKrajRadnogVremena { get; set; }
+        [Required(ErrorMessage = "Nedostaje kraj radnog vremena")]
+        public TimeSpan SredaKrajRadnogVremena { get; set; }
 
-        public DateTime SredaPocetakRadnogVremena { get; set; }
+        [Required(ErrorMessage = "Nedostaje pоčetak radnog vremena")]
+        public TimeSpan CetvrtakPocetakRadnogVremena { get; set; }
 
-        public DateTime SredaKrajRadnogVremena { get; set; }
+        [Required(ErrorMessage = "Nedostaje kraj radnog vremena")]
+        public TimeSpan CetvrtakKrajRadnogVremena { get; set; }
 
-        public DateTime CetvrtakPocetakRadnogVremena { get; set; }
+        [Required(ErrorMessage = "Nedostaje pоčetak radnog vremena")]
+        public TimeSpan PetakPocetakRadnogVremena { get; set; }
 
-        public DateTime CetvrtakKrajRadnogVremena { get; set; }
+        [Required(ErrorMessage = "Nedostaje kraj radnog vremena")]
+        public TimeSpan PetakKrajRadnogVremena { get; set; }
 
-        public DateTime PetakPocetakRadnogVremena { get; set; }
+        public TimeSpan? SubotaPocetakRadnogVremena { get; set; }
 
-        public DateTime PetakKrajRadnogVremena { get; set; }
+        public TimeSpan? SubotaKrajRadnogVremena { get; set; }
 
-        public DateTime SubotaPocetakRadnogVremena { get; set; }
+        public TimeSpan? NedeljaPocetakRadnogVremena { get; set; }
 
-        public DateTime SubotaKrajRadnogVremena { get; set; }
+        public TimeSpan? NedeljaKrajRadnogVremena { get; set; }
 
-        public DateTime NedeljaPocetakRadnogVremena { get; set; }
-
-        public DateTime NedeljaKrajRadnogVremena { get; set; }
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+        public List<Tuple<DayOfWeek, TimeSpan?, TimeSpan?>> RadnaVremena
+        {
+            get
+            {
+                return new List<Tuple<DayOfWeek, TimeSpan?, TimeSpan?>>
+                {
+                    new Tuple<DayOfWeek, TimeSpan?, TimeSpan?>(DayOfWeek.Monday, PonedeljakPocetakRadnogVremena, PonedeljakKrajRadnogVremena),
+                    new Tuple<DayOfWeek, TimeSpan?, TimeSpan?>(DayOfWeek.Tuesday, UtorakPocetakRadnogVremena, UtorakKrajRadnogVremena),
+                    new Tuple<DayOfWeek, TimeSpan?, TimeSpan?>(DayOfWeek.Wednesday, SredaPocetakRadnogVremena, SredaKrajRadnogVremena),
+                    new Tuple<DayOfWeek, TimeSpan?, TimeSpan?>(DayOfWeek.Thursday, CetvrtakPocetakRadnogVremena, CetvrtakKrajRadnogVremena),
+                    new Tuple<DayOfWeek, TimeSpan?, TimeSpan?>(DayOfWeek.Friday, PetakPocetakRadnogVremena, PetakKrajRadnogVremena),
+                    new Tuple<DayOfWeek, TimeSpan?, TimeSpan?>(DayOfWeek.Saturday, SubotaPocetakRadnogVremena, SubotaKrajRadnogVremena),
+                    new Tuple<DayOfWeek, TimeSpan?, TimeSpan?>(DayOfWeek.Sunday, NedeljaPocetakRadnogVremena, NedeljaKrajRadnogVremena)
+                };
+            }
+        }
     }
 }
