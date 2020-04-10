@@ -116,7 +116,7 @@ namespace EvidencijaRadnogVremena.BusinessLogic
             Result<string> res = new Result<string>() { Success = true };
             using (var context = new ApplicationDbContext())
             {
-                var radnik = context.Radniks.AsEnumerable().FirstOrDefault(x => x.RadnikId == model.RadnikId);
+                var radnik = context.Workers.AsEnumerable().FirstOrDefault(x => x.RadnikId == model.RadnikId);
                 if (radnik.Password != model.Password)
                 {
                     res.Success = false;

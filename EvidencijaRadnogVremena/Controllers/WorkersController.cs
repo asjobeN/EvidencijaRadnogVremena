@@ -10,25 +10,25 @@ using EvidencijaRadnogVremena.Models;
 
 namespace EvidencijaRadnogVremena.Controllers
 {
-    public class RadniksController : Controller
+    public class WorkersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Radniks
+        // GET: Workers
         public ActionResult Index()
         {
-            var radniks = db.Radniks.Include(r => r.Market);
+            var radniks = db.Workers.Include(r => r.Market);
             return View(radniks.ToList());
         }
 
-        // GET: Radniks/Details/5
+        // GET: Workers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Radnik radnik = db.Radniks.Find(id);
+            Worker radnik = db.Workers.Find(id);
             if (radnik == null)
             {
                 return HttpNotFound();
@@ -36,53 +36,53 @@ namespace EvidencijaRadnogVremena.Controllers
             return View(radnik);
         }
 
-        // GET: Radniks/Create
+        // GET: Workers/Create
         public ActionResult Create()
         {
             ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa");
-            return View();
+            return View("WorkerForm");
         }
 
-        // POST: Radniks/Create
+        // POST: Workers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RadnikId,SifraRadnika,ImePrezime,MarketId,Uloga")] Radnik radnik)
+        public ActionResult Create([Bind(Include = "RadnikId,SifraRadnika,ImePrezime,MarketId,Uloga")] Worker radnik)
         {
             if (ModelState.IsValid)
             {
-                db.Radniks.Add(radnik);
+                db.Workers.Add(radnik);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa", radnik.MarketId);
-            return View(radnik);
+            return View("WorkerForm", radnik);
         }
 
-        // GET: Radniks/Edit/5
+        // GET: Workers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Radnik radnik = db.Radniks.Find(id);
+            Worker radnik = db.Workers.Find(id);
             if (radnik == null)
             {
                 return HttpNotFound();
             }
             ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa", radnik.MarketId);
-            return View(radnik);
+            return View("WorkerForm", radnik);
         }
 
-        // POST: Radniks/Edit/5
+        // POST: Workers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RadnikId,SifraRadnika,ImePrezime,MarketId,Uloga")] Radnik radnik)
+        public ActionResult Edit([Bind(Include = "RadnikId,SifraRadnika,ImePrezime,MarketId,Uloga")] Worker radnik)
         {
             if (ModelState.IsValid)
             {
@@ -91,17 +91,17 @@ namespace EvidencijaRadnogVremena.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa", radnik.MarketId);
-            return View(radnik);
+            return View("WorkerForm", radnik);
         }
 
-        // GET: Radniks/Delete/5
+        // GET: Workers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Radnik radnik = db.Radniks.Find(id);
+            Worker radnik = db.Workers.Find(id);
             if (radnik == null)
             {
                 return HttpNotFound();
@@ -109,13 +109,13 @@ namespace EvidencijaRadnogVremena.Controllers
             return View(radnik);
         }
 
-        // POST: Radniks/Delete/5
+        // POST: Workers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Radnik radnik = db.Radniks.Find(id);
-            db.Radniks.Remove(radnik);
+            Worker radnik = db.Workers.Find(id);
+            db.Workers.Remove(radnik);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

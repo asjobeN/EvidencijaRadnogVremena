@@ -18,8 +18,8 @@ namespace EvidencijaRadnogVremena.Models
 
         [Required(ErrorMessage = "Nedostaje naziv marketa")]
         public string Naziv { get; set; }
-        public virtual List<Radnik> Radnici { get; set; }
-        //public virtual List<RadniDan> RadniDani { get; set; }
+
+        public virtual List<Worker> Radnici { get; set; }
 
         [Required(ErrorMessage = "Nedostaje pоčetak radnog vremena")]
         public TimeSpan PonedeljakPocetakRadnogVremena { get; set; }

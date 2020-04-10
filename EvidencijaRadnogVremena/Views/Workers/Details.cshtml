@@ -1,13 +1,12 @@
-﻿@model EvidencijaRadnogVremena.Models.Radnik
+﻿@model EvidencijaRadnogVremena.Models.Worker
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalji radnika</h2>
 
 <div>
-    <h4>Radnik</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -52,6 +51,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.RadnikId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Izmeni", "Edit", new { id = Model.RadnikId }) |
+    @Html.ActionLink("Povratak na listu ranika", "Index")
 </p>

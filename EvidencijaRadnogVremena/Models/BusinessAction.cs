@@ -15,7 +15,7 @@ namespace EvidencijaRadnogVremena.Models
         public DateTime Date { get; set; }
         public int RadnikId { get; set; }
         [ForeignKey("RadnikId")]
-        public virtual Radnik Radnik { get; set; }
+        public virtual Worker Radnik { get; set; }
         public TipRadaEnum TipRada { get; set; }
         public string LocalMachine { get; set; }
     }

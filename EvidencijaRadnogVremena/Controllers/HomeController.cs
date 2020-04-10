@@ -97,7 +97,7 @@ namespace EvidencijaRadnogVremena.Controllers
                         model.Message = resultCheckUser.Message;
                         return Json(model, JsonRequestBehavior.AllowGet);
                     }
-                    
+
                     var result = RadnikManager.BackFromBreak(model);
                     if (!result.Success)
                     {
@@ -150,7 +150,7 @@ namespace EvidencijaRadnogVremena.Controllers
             }
             return Json(model, JsonRequestBehavior.AllowGet);
         }
-        
+
         // POST: /Home/CheckIn
         [System.Web.Http.HttpPost]
         [System.Web.Http.Authorize]

@@ -38,7 +38,7 @@ namespace EvidencijaRadnogVremena.Controllers
         // GET: Markets/Create
         public ActionResult Create()
         {
-            return View();
+            return View("MarketForm");
         }
 
         // POST: Markets/Create
@@ -55,7 +55,7 @@ namespace EvidencijaRadnogVremena.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(market);
+            return View("MarketForm", market);
         }
 
         // GET: Markets/Edit/5
@@ -70,7 +70,7 @@ namespace EvidencijaRadnogVremena.Controllers
             {
                 return HttpNotFound();
             }
-            return View("Create", market);
+            return View("MarketForm", market);
         }
 
         // POST: Markets/Edit/5
@@ -86,7 +86,7 @@ namespace EvidencijaRadnogVremena.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(market);
+            return View("MarketForm", market);
         }
 
         // GET: Markets/Delete/5

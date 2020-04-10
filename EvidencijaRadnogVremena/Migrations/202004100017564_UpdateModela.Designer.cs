@@ -7,13 +7,13 @@ namespace EvidencijaRadnogVremena.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class Marketi : IMigrationMetadata
+    public sealed partial class UpdateModela : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Marketi));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateModela));
         
         string IMigrationMetadata.Id
         {
-            get { return "202004092212081_Marketi"; }
+            get { return "202004100017564_UpdateModela"; }
         }
         
         string IMigrationMetadata.Source

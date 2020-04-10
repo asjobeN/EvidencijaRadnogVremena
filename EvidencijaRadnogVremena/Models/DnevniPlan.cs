@@ -15,7 +15,7 @@ namespace EvidencijaRadnogVremena.Models
 
         public int RadnikId { get; set; }
 
-        public int IdZamenskogRadnika { get; set; } //regularno radno vreme = 0
+        public int IdZamenskogRadnika { get; set; }
 
         public DateTime PlaniranPocetakRada { get; set; }
 

@@ -262,9 +262,9 @@
     <Compile Include="Migrations\202004092152334_initial.designer.cs">
       <DependentUpon>202004092152334_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004092212081_Marketi.cs" />
-    <Compile Include="Migrations\202004092212081_Marketi.designer.cs">
-      <DependentUpon>202004092212081_Marketi.cs</DependentUpon>
+    <Compile Include="Migrations\202004100017564_UpdateModela.cs" />
+    <Compile Include="Migrations\202004100017564_UpdateModela.Designer.cs">
+      <DependentUpon>202004100017564_UpdateModela.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -274,9 +274,10 @@
     <Compile Include="BusinessLogic\DashboardManager.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Market.cs" />
+    <Compile Include="Models\NedeljniPlan.cs" />
     <Compile Include="Models\OstvareniRad.cs" />
     <Compile Include="Models\RadniDan.cs" />
-    <Compile Include="Models\Radnik.cs" />
+    <Compile Include="Models\Worker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -436,11 +437,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Objekats\Create.cshtml" />
-    <Content Include="Views\Objekats\Delete.cshtml" />
-    <Content Include="Views\Objekats\Details.cshtml" />
-    <Content Include="Views\Objekats\Edit.cshtml" />
-    <Content Include="Views\Objekats\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.js.flow" />
@@ -451,18 +447,18 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Markets\Create.cshtml" />
     <Content Include="Views\Markets\Delete.cshtml" />
     <Content Include="Views\Markets\Details.cshtml" />
     <Content Include="Views\Markets\Edit.cshtml" />
     <Content Include="Views\Markets\Index.cshtml" />
     <Content Include="Views\Home\_Partial.cshtml" />
-    <Content Include="Views\Radniks\Create.cshtml" />
-    <Content Include="Views\Radniks\Delete.cshtml" />
-    <Content Include="Views\Radniks\Details.cshtml" />
-    <Content Include="Views\Radniks\Edit.cshtml" />
-    <Content Include="Views\Radniks\Index.cshtml" />
+    <Content Include="Views\Workers\WorkerForm.cshtml" />
+    <Content Include="Views\Workers\Delete.cshtml" />
+    <Content Include="Views\Workers\Details.cshtml" />
+    <Content Include="Views\Workers\Edit.cshtml" />
+    <Content Include="Views\Workers\Index.cshtml" />
     <Content Include="Views\Home\Markets.cshtml" />
+    <Content Include="Views\Markets\MarketForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -483,8 +479,8 @@
     <EmbeddedResource Include="Migrations\202004092152334_initial.resx">
       <DependentUpon>202004092152334_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004092212081_Marketi.resx">
-      <DependentUpon>202004092212081_Marketi.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004100017564_UpdateModela.resx">
+      <DependentUpon>202004100017564_UpdateModela.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
