@@ -3,16 +3,16 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class marketdodavanjenapomene : DbMigration
+    public partial class Marketi : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.Markets", "Napomena", c => c.String());
+            AddColumn("dbo.Markets", "NedeljaKrajRadnogVremena", c => c.Time(precision: 7));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Markets", "Napomena");
+            DropColumn("dbo.Markets", "NedeljaKrajRadnogVremena");
         }
     }
 }
