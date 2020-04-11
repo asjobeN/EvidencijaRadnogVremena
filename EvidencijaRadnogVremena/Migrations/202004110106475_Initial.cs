@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -18,20 +18,22 @@
                         LocalMachine = c.String(),
                     })
                 .PrimaryKey(t => t.BusinessActionId)
-                .ForeignKey("dbo.Radniks", t => t.RadnikId, cascadeDelete: true)
+                .ForeignKey("dbo.Workers", t => t.RadnikId, cascadeDelete: true)
                 .Index(t => t.RadnikId);
             
             CreateTable(
-                "dbo.Radniks",
+                "dbo.Workers",
                 c => new
                     {
                         RadnikId = c.Int(nullable: false, identity: true),
                         SifraRadnika = c.String(),
                         ImePrezime = c.String(),
                         Username = c.String(),
-                        Password = c.String(),
+                        Password = c.String(nullable: false, maxLength: 100),
                         MarketId = c.Int(),
                         Uloga = c.Int(nullable: false),
+                        Email = c.String(),
+                        Pasivan = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.RadnikId)
                 .ForeignKey("dbo.Markets", t => t.MarketId)
@@ -42,9 +44,9 @@
                 c => new
                     {
                         MarketId = c.Int(nullable: false, identity: true),
-                        SifraMarketa = c.String(),
-                        Adresa = c.String(),
-                        Naziv = c.String(),
+                        SifraMarketa = c.String(nullable: false),
+                        Adresa = c.String(nullable: false),
+                        Naziv = c.String(nullable: false),
                         PonedeljakPocetakRadnogVremena = c.Time(nullable: false, precision: 7),
                         PonedeljakKrajRadnogVremena = c.Time(nullable: false, precision: 7),
                         UtorakPocetakRadnogVremena = c.Time(nullable: false, precision: 7),
@@ -55,9 +57,10 @@
                         CetvrtakKrajRadnogVremena = c.Time(nullable: false, precision: 7),
                         PetakPocetakRadnogVremena = c.Time(nullable: false, precision: 7),
                         PetakKrajRadnogVremena = c.Time(nullable: false, precision: 7),
-                        SubotaPocetakRadnogVremena = c.Time(nullable: false, precision: 7),
-                        SubotaKrajRadnogVremena = c.Time(nullable: false, precision: 7),
+                        SubotaPocetakRadnogVremena = c.Time(precision: 7),
+                        SubotaKrajRadnogVremena = c.Time(precision: 7),
                         NedeljaPocetakRadnogVremena = c.Time(precision: 7),
+                        NedeljaKrajRadnogVremena = c.Time(precision: 7),
                     })
                 .PrimaryKey(t => t.MarketId);
             
@@ -137,15 +140,15 @@
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.BusinessActions", "RadnikId", "dbo.Radniks");
-            DropForeignKey("dbo.Radniks", "MarketId", "dbo.Markets");
+            DropForeignKey("dbo.BusinessActions", "RadnikId", "dbo.Workers");
+            DropForeignKey("dbo.Workers", "MarketId", "dbo.Markets");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Radniks", new[] { "MarketId" });
+            DropIndex("dbo.Workers", new[] { "MarketId" });
             DropIndex("dbo.BusinessActions", new[] { "RadnikId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
@@ -153,7 +156,7 @@
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Markets");
-            DropTable("dbo.Radniks");
+            DropTable("dbo.Workers");
             DropTable("dbo.BusinessActions");
         }
     }

@@ -258,13 +258,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="BusinessLogic\WorkerManager.cs" />
-    <Compile Include="Migrations\202004092152334_initial.cs" />
-    <Compile Include="Migrations\202004092152334_initial.designer.cs">
-      <DependentUpon>202004092152334_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004100017564_UpdateModela.cs" />
-    <Compile Include="Migrations\202004100017564_UpdateModela.Designer.cs">
-      <DependentUpon>202004100017564_UpdateModela.cs</DependentUpon>
+    <Compile Include="Migrations\202004110106475_Initial.cs" />
+    <Compile Include="Migrations\202004110106475_Initial.designer.cs">
+      <DependentUpon>202004110106475_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -482,11 +478,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202004092152334_initial.resx">
-      <DependentUpon>202004092152334_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004100017564_UpdateModela.resx">
-      <DependentUpon>202004100017564_UpdateModela.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004110106475_Initial.resx">
+      <DependentUpon>202004110106475_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>

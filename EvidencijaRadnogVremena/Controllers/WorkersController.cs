@@ -48,7 +48,7 @@ namespace EvidencijaRadnogVremena.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RadnikId,SifraRadnika,ImePrezime,MarketId,Uloga")] Worker radnik)
+        public ActionResult Create([Bind(Include = "RadnikId,SifraRadnika,ImePrezime,MarketId,Uloga,Pasivan,Password,ConfirmPassword,Boja,Email,Market,Username")] Worker radnik)
         {
             if (ModelState.IsValid)
             {

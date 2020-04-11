@@ -76,7 +76,7 @@
                 </td>
                 <td>
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.UtorakPocetakRadnogVremena, "{0: C}", new { htmlAttributes = new { @class = "form-control", @value = "07:00", @step = "300" } })
+                        @Html.EditorFor(model => model.UtorakPocetakRadnogVremena, @"{0: hh\:mm}", new { htmlAttributes = new { @class = "form-control", @value = "07:00", @step = "300" } })
                     </div>
                 </td>
                 <td>
