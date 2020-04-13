@@ -7,9 +7,9 @@ namespace EvidencijaRadnogVremena.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class ndeljniPln : IMigrationMetadata
+    public sealed partial class NedeljniPlan : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ndeljniPln));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NedeljniPlan));
         
         string IMigrationMetadata.Id
         {

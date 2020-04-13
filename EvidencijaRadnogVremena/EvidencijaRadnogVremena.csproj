@@ -252,6 +252,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MarketsController.cs" />
+    <Compile Include="Controllers\NedeljniPlansController.cs" />
     <Compile Include="Controllers\WorkersController.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Global.asax.cs">
@@ -265,6 +266,10 @@
     <Compile Include="Migrations\202004121147200_UpdateBojaWorker.cs" />
     <Compile Include="Migrations\202004121147200_UpdateBojaWorker.designer.cs">
       <DependentUpon>202004121147200_UpdateBojaWorker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004131908142_NedeljniPlan.cs" />
+    <Compile Include="Migrations\202004131908142_NedeljniPlan.designer.cs">
+      <DependentUpon>202004131908142_NedeljniPlan.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -471,6 +476,11 @@
     <Content Include="Views\Workers\Index.cshtml" />
     <Content Include="Views\Home\Markets.cshtml" />
     <Content Include="Views\Markets\MarketForm.cshtml" />
+    <Content Include="Views\NedeljniPlans\Create.cshtml" />
+    <Content Include="Views\NedeljniPlans\Delete.cshtml" />
+    <Content Include="Views\NedeljniPlans\Details.cshtml" />
+    <Content Include="Views\NedeljniPlans\Edit.cshtml" />
+    <Content Include="Views\NedeljniPlans\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -493,6 +503,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004121147200_UpdateBojaWorker.resx">
       <DependentUpon>202004121147200_UpdateBojaWorker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004131908142_NedeljniPlan.resx">
+      <DependentUpon>202004131908142_NedeljniPlan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
