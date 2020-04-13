@@ -262,6 +262,10 @@
     <Compile Include="Migrations\202004110106475_Initial.designer.cs">
       <DependentUpon>202004110106475_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004121147200_UpdateBojaWorker.cs" />
+    <Compile Include="Migrations\202004121147200_UpdateBojaWorker.designer.cs">
+      <DependentUpon>202004121147200_UpdateBojaWorker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BusinessAction.cs" />
@@ -296,10 +300,14 @@
     <Content Include="Content\bootstrap-yeti.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\stylish-portfolio.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\loader.gif" />
+    <Content Include="Images\markets.jpg" />
+    <Content Include="Images\portfolio-3.jpg" />
+    <Content Include="Images\schedule.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -323,6 +331,7 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -333,6 +342,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jscolor.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -480,6 +490,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202004110106475_Initial.resx">
       <DependentUpon>202004110106475_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004121147200_UpdateBojaWorker.resx">
+      <DependentUpon>202004121147200_UpdateBojaWorker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>

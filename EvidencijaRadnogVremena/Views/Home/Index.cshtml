@@ -1,11 +1,12 @@
 ﻿@model EvidencijaRadnogVremena.ViewModel.ManagerDashboardViewModel
 @{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+@*<link rel="stylesheet" href="../Content/bootstrap-yeti.min.css" />*@
 
 
 @*<div class="jumbotron">
@@ -14,11 +15,43 @@
         <p><a href="" class="btn btn-primary btn-lg">Go to table &raquo;</a></p>
     </div>*@
 
+<div class="row">
+    <div class="col-lg-4">
+        <a class="portfolio-item" href="../Markets/">
+            <span class="caption">
+                <span class="caption-content">
+                    <p class="mb-0">Markets</p>
+                </span>
+            </span>
+            <img class="img-fluid" src="Images/markets.jpg" alt="">
+        </a>
+    </div>
+    <div class="col-lg-4">
+        <a class="portfolio-item" href="../Workers/">
+            <span class="caption">
+                <span class="caption-content">
+                    <p class="mb-0">Workers</p>
+                </span>
+            </span>
+            <img class="img-fluid" src="Images/markets.jpg" alt="">
+        </a>
+    </div>
+    <div class="col-lg-4">
+        <a class="portfolio-item" href="#">
+            <span class="caption">
+                <span class="caption-content">
+                    <h1>Work records</h1>
+                    <p class="mb-0">Some day...</p>
+                </span>
+            </span>
+            <img class="img-fluid" src="Images/markets.jpg" alt="">
+        </a>
+    </div>
+</div>
 
-
-<div>
-    @if (Model != null)
-    {
+@if (Model != null)
+{
+    <div>
         <table class="table">
             <tr>
                 <th>
@@ -67,29 +100,14 @@
                 </tr>
             }
         </table>
-    }
-</div>
-<div class="row">
-    @*<div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </div>*@
-    @*<div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </div>*@
+    </div>
+}
+
+
+<div>
     <div class="jumbotron">
-        <h1 class="btn btn-outline-warning">TODO: Da bacimo pogled VVVV</h1>
-        <h1></h1>
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>Spisak radnika</h2>
+        <p>Lista...</p>
     </div>
 </div>
 

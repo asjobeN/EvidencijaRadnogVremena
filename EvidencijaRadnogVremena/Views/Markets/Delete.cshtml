@@ -7,155 +7,108 @@
 
 <h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Are you sure you want to delete this market?</h3>
+<div class="row">
+    <div class="col-md-4">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.SifraMarketa)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SifraMarketa)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Adresa)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Adresa)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Naziv)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PonedeljakRadnoVreme)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PonedeljakRadnoVreme)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UtorakRadnoVreme)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UtorakRadnoVreme)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SredaRadnoVreme)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SredaRadnoVreme)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CetvrtakRadnoVreme)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CetvrtakRadnoVreme)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PetakRadnoVreme)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PetakRadnoVreme)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubotaRadnoVreme)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubotaRadnoVreme)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NedeljaRadnoVreme)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NedeljaRadnoVreme)
+            </dd>
+        </dl>
+    </div>
+</div>
+
 <div>
-    <h4>Market</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.SifraMarketa)
-        </dt>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.SifraMarketa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Adresa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Adresa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Naziv)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Naziv)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PonedeljakPocetakRadnogVremena)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PonedeljakPocetakRadnogVremena)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PonedeljakKrajRadnogVremena)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PonedeljakKrajRadnogVremena)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UtorakPocetakRadnogVremena)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UtorakPocetakRadnogVremena)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UtorakKrajRadnogVremena)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UtorakKrajRadnogVremena)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SredaPocetakRadnogVremena)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SredaPocetakRadnogVremena)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SredaKrajRadnogVremena)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SredaKrajRadnogVremena)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CetvrtakPocetakRadnogVremena)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CetvrtakPocetakRadnogVremena)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CetvrtakKrajRadnogVremena)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CetvrtakKrajRadnogVremena)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PetakPocetakRadnogVremena)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PetakPocetakRadnogVremena)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PetakKrajRadnogVremena)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PetakKrajRadnogVremena)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SubotaPocetakRadnogVremena)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SubotaPocetakRadnogVremena)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SubotaKrajRadnogVremena)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SubotaKrajRadnogVremena)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NedeljaPocetakRadnogVremena)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NedeljaPocetakRadnogVremena)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NedeljaKrajRadnogVremena)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NedeljaKrajRadnogVremena)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-warning" /> |
+        @Html.ActionLink("Povratak na listu marketa", "Index", "", new { @class = "btn btn-secondary" })
+    </div>
+}
 </div>
