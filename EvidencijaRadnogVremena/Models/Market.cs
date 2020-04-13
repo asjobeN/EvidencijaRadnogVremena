@@ -21,14 +21,7 @@ namespace EvidencijaRadnogVremena.Models
         [Required(ErrorMessage = "Nedostaje naziv marketa")]
         public string Naziv { get; set; }
 
-        public virtual List<Worker> Radnici
-        {
-            get
-            {
-                ApplicationDbContext context = new ApplicationDbContext();
-                return context.Workers.Where(worker => worker.MarketId == this.MarketId).ToList();
-            }
-        }
+        public virtual List<Worker> Radnici { get; set; }
 
         [Required(ErrorMessage = "Nedostaje pоčetak radnog vremena")]
         public TimeSpan PonedeljakPocetakRadnogVremena { get; set; }
@@ -92,7 +85,7 @@ namespace EvidencijaRadnogVremena.Models
             get
             {
                 return $"{(SubotaPocetakRadnogVremena.HasValue ? SubotaPocetakRadnogVremena.Value.ToString(@"hh\:mm") : string.Empty)} - " +
-$"{(SubotaKrajRadnogVremena.HasValue ? SubotaKrajRadnogVremena.Value.ToString(@"hh\:mm") : string.Empty)}";
+                        $"{(SubotaKrajRadnogVremena.HasValue ? SubotaKrajRadnogVremena.Value.ToString(@"hh\:mm") : string.Empty)}";
             }
         }
 
@@ -107,7 +100,7 @@ $"{(SubotaKrajRadnogVremena.HasValue ? SubotaKrajRadnogVremena.Value.ToString(@"
             get
             {
                 return $"{(NedeljaPocetakRadnogVremena.HasValue ? NedeljaPocetakRadnogVremena.Value.ToString(@"hh\:mm") : string.Empty)} - " +
-$"{(NedeljaKrajRadnogVremena.HasValue ? NedeljaKrajRadnogVremena.Value.ToString(@"hh\:mm") : string.Empty)}";
+                        $"{(NedeljaKrajRadnogVremena.HasValue ? NedeljaKrajRadnogVremena.Value.ToString(@"hh\:mm") : string.Empty)}";
             }
         }
 

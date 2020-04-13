@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using System.Drawing;
 
 namespace EvidencijaRadnogVremena.Models
 {
@@ -35,7 +35,14 @@ namespace EvidencijaRadnogVremena.Models
 
         public virtual Market Market { get; set; }
 
-        public System.Drawing.Color Boja { get; set; }
+        public int Argb
+        {
+            get { return Boja.ToArgb(); }
+            set { Boja = Color.FromArgb(value); }
+        }
+
+        [NotMapped]
+        public Color Boja { get; set; }
 
         public Enums.UlogaEnum Uloga { get; set; }
 

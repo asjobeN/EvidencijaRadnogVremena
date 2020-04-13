@@ -119,9 +119,9 @@
             }
         </table>
     </div>
+
 </div>
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MarketId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Izmeni", "Edit", new { id = Model.MarketId }, new { @class = "btn btn-primary" }) | @Html.ActionLink("Povratak na listu marketa", "Index", "", new { @class = "btn btn-secondary" })
 </p>

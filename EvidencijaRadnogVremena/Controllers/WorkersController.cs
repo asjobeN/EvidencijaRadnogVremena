@@ -40,7 +40,7 @@ namespace EvidencijaRadnogVremena.Controllers
         public ActionResult Create()
         {
             ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa");
-            return View("WorkerForm");
+            return View("WorkerForm", new Worker());
         }
 
         // POST: Workers/Create
@@ -48,17 +48,30 @@ namespace EvidencijaRadnogVremena.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RadnikId,SifraRadnika,ImePrezime,MarketId,Uloga,Pasivan,Password,ConfirmPassword,Boja,Email,Market,Username")] Worker radnik)
+        public ActionResult Save([Bind(Include = "RadnikId,SifraRadnika,ImePrezime,MarketId,Uloga,Pasivan,Password,ConfirmPassword,Boja,Email,Market,Username")] Worker radnik)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                db.Workers.Add(radnik);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa", radnik.MarketId);
+                foreach (var prop in ModelState.Where(prop => prop.Value.Errors.Any()))
+                {
+                    Console.WriteLine(prop.Key, prop.Value.Errors);
+                }
+                return View("WorkerForm", radnik);
             }
 
-            ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa", radnik.MarketId);
-            return View("WorkerForm", radnik);
+            if (radnik.RadnikId == 0) //Novi radnik
+            {
+                db.Workers.Add(radnik);
+
+            }
+            else // Ažuriranje
+            {
+                db.Entry(radnik).State = EntityState.Modified;
+            }
+
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Workers/Edit/5

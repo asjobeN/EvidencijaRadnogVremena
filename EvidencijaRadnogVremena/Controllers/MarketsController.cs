@@ -38,7 +38,7 @@ namespace EvidencijaRadnogVremena.Controllers
         // GET: Markets/Create
         public ActionResult Create()
         {
-            return View("MarketForm");
+            return View("MarketForm", new Market());
         }
 
         // POST: Markets/Create
@@ -46,16 +46,27 @@ namespace EvidencijaRadnogVremena.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MarketId,SifraMarketa,Adresa,Naziv,PonedeljakPocetakRadnogVremena,PonedeljakKrajRadnogVremena,UtorakPocetakRadnogVremena,UtorakKrajRadnogVremena,SredaPocetakRadnogVremena,SredaKrajRadnogVremena,CetvrtakPocetakRadnogVremena,CetvrtakKrajRadnogVremena,PetakPocetakRadnogVremena,PetakKrajRadnogVremena,SubotaPocetakRadnogVremena,SubotaKrajRadnogVremena,NedeljaPocetakRadnogVremena,NedeljaKrajRadnogVremena")] Market market)
+        public ActionResult Save([Bind(Include = "MarketId,SifraMarketa,Adresa,Naziv,PonedeljakPocetakRadnogVremena,PonedeljakKrajRadnogVremena,UtorakPocetakRadnogVremena,UtorakKrajRadnogVremena,SredaPocetakRadnogVremena,SredaKrajRadnogVremena,CetvrtakPocetakRadnogVremena,CetvrtakKrajRadnogVremena,PetakPocetakRadnogVremena,PetakKrajRadnogVremena,SubotaPocetakRadnogVremena,SubotaKrajRadnogVremena,NedeljaPocetakRadnogVremena,NedeljaKrajRadnogVremena")] Market market)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                foreach (var prop in ModelState.Where(prop => prop.Value.Errors.Any()))
+                {
+                    Console.WriteLine(prop.Key, prop.Value.Errors);
+                }
+
+                return View("MarketForm", market);
+            }
+            if (market.MarketId == 0)
             {
                 db.Markets.Add(market);
-                db.SaveChanges();
-                return RedirectToAction("Index");
             }
-
-            return View("MarketForm", market);
+            else
+            {
+                db.Entry(market).State = EntityState.Modified;
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Markets/Edit/5
@@ -65,7 +76,7 @@ namespace EvidencijaRadnogVremena.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Market market = db.Markets.Find(id);
+            Market market = db.Markets.SingleOrDefault(mar => mar.MarketId == id);
             if (market == null)
             {
                 return HttpNotFound();

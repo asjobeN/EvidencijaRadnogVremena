@@ -23,6 +23,7 @@ namespace EvidencijaRadnogVremena
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/stylish-portfolio.min.css",
                       "~/Content/bootstrap-yeti.css",
                       "~/Content/site.css"));
         }
