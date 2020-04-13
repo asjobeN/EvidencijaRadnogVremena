@@ -126,5 +126,15 @@ namespace EvidencijaRadnogVremena.BusinessLogic
                 return res;
             }
         }
+
+        internal static Task CreateRegisteredWorker(RegisterViewModel model)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                context.Workers.Add(new Worker() { Username = model.Username, Password = model.Password, ConfirmPassword = model.Password, Email = model.Email });
+                context.SaveChanges();
+            }
+            return Task.Factory.StartNew(() => {  });
+        }
     }
 }
