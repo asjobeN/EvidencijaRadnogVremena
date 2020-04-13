@@ -31,6 +31,6 @@ namespace EvidencijaRadnogVremena.Models
         [NotMapped]
         public string PeriodOstvarenaPauza { get; set; }
 
-        public virtual DnevniPlan DnevniPlan { get; set; }
+       // public virtual DnevniPlan DnevniPlan { get; set; }
     }
 }

@@ -57,7 +57,5 @@ namespace EvidencijaRadnogVremena.BusinessLogic
             public Worker Radnik { get; set; }
             public Enums.TipRadaEnum TipRada { get; set; }
         }
-
-
     }
 }

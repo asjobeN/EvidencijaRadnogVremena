@@ -1,6 +1,7 @@
 ﻿using EvidencijaRadnogVremena.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,11 @@ namespace EvidencijaRadnogVremena.Models
         public int DnevniPlanId { get; set; }
 
         public DateTime Datum { get; set; }
+
+        [DisplayName("Nedelja")]
+        public int NedeljniPlanId { get; set; }
+
+        public virtual NedeljniPlan NedeljniPlan { get; set; }
 
         public int RadnikId { get; set; }
 
@@ -33,6 +39,7 @@ namespace EvidencijaRadnogVremena.Models
         [NotMapped]
         public string PeriodPauze { get; set; }
 
-        public virtual OstvareniRad OstvarniRad { get; set; }
+        //public virtual OstvareniRad OstvarniRad { get; set; }
+        
     }
 }
