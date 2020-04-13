@@ -127,7 +127,7 @@ namespace EvidencijaRadnogVremena.BusinessLogic
             }
         }
 
-        internal static Task CreateRegisteredWorker(RegisterViewModel model)
+        internal static Task CreateRegisteredWorker(ViewModel.RegisterViewModel model)
         {
             using (var context = new ApplicationDbContext())
             {

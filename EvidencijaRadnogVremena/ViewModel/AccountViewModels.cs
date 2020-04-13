@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace EvidencijaRadnogVremena.Models
+namespace EvidencijaRadnogVremena.ViewModel
 {
     public class ExternalLoginConfirmationViewModel
     {

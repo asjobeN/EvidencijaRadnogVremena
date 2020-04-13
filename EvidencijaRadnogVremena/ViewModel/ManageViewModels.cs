@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace EvidencijaRadnogVremena.Models
+namespace EvidencijaRadnogVremena.ViewModel
 {
     public class IndexViewModel
     {

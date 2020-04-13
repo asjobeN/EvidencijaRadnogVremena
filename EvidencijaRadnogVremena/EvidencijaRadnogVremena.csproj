@@ -271,12 +271,12 @@
       <DependentUpon>202004121745285_Account.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="Models\BusinessAction.cs" />
     <Compile Include="Models\DnevniPlan.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="BusinessLogic\DashboardManager.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="ViewModel\ManageViewModels.cs" />
     <Compile Include="Models\Market.cs" />
     <Compile Include="Models\NedeljniPlan.cs" />
     <Compile Include="Models\OstvareniRad.cs" />
