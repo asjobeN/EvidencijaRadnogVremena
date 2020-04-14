@@ -17,6 +17,8 @@ namespace EvidencijaRadnogVremena.Controllers
         // GET: NedeljniPlans
         public ActionResult Index()
         {
+            ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa");
+            //var nedeljniPlan = db.NedeljniPlans.Include(r => r.MarketId);
             return View(db.NedeljniPlans.ToList());
         }
 
@@ -38,7 +40,8 @@ namespace EvidencijaRadnogVremena.Controllers
         // GET: NedeljniPlans/Create
         public ActionResult Create()
         {
-            return View();
+            ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa");
+            return View("NedeljniPlanForm", new NedeljniPlan());
         }
 
         // POST: NedeljniPlans/Create
@@ -54,7 +57,7 @@ namespace EvidencijaRadnogVremena.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa");
             return View(nedeljniPlan);
         }
 
@@ -65,12 +68,13 @@ namespace EvidencijaRadnogVremena.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NedeljniPlan nedeljniPlan = db.NedeljniPlans.Find(id);
+            NedeljniPlan nedeljniPlan = db.NedeljniPlans.SingleOrDefault(x => x.NedeljniPlanId == id);
             if (nedeljniPlan == null)
             {
                 return HttpNotFound();
             }
-            return View(nedeljniPlan);
+            ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa", nedeljniPlan.MarketId);
+            return View("NedeljniPlanForm", nedeljniPlan);
         }
 
         // POST: NedeljniPlans/Edit/5
@@ -86,9 +90,39 @@ namespace EvidencijaRadnogVremena.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(nedeljniPlan);
+            ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa");
+            return View("NedeljniPlanForm", nedeljniPlan);
         }
+        // POST: Workers/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Save([Bind(Include = "NedeljniPlanId, DatumOd, DatumDo, MarketId")] NedeljniPlan nedeljniPlan)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa", nedeljniPlan.MarketId);
+                foreach (var prop in ModelState.Where(prop => prop.Value.Errors.Any()))
+                {
+                    Console.WriteLine(prop.Key, prop.Value.Errors);
+                }
+                return View("NedeljniPlanForm", nedeljniPlan);
+            }
 
+            if (nedeljniPlan.NedeljniPlanId == 0) //Novi nedeljni plan
+            {
+                db.NedeljniPlans.Add(nedeljniPlan);
+
+            }
+            else // Ažuriranje
+            {
+                db.Entry(nedeljniPlan).State = EntityState.Modified;
+            }
+
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
         // GET: NedeljniPlans/Delete/5
         public ActionResult Delete(int? id)
         {

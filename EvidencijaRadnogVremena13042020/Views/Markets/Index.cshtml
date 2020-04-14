@@ -1,0 +1,48 @@
+﻿@model IEnumerable<EvidencijaRadnogVremena.Models.Market>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Spisak marketa</h2>
+
+<p>
+    @Html.ActionLink("Dodaj novi market", "Create", "", new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SifraMarketa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SifraMarketa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            
+            <td>
+                @Html.ActionLink("Izmeni", "Edit", new { id = item.MarketId }) |
+                @Html.ActionLink("Detalji", "Details", new { id = item.MarketId }) |
+                @Html.ActionLink("Obriši", "Delete", new { id = item.MarketId })
+            </td>
+        </tr>
+    }
+
+</table>

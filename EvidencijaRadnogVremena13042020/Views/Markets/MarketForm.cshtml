@@ -1,0 +1,229 @@
+﻿@model EvidencijaRadnogVremena.Models.Market
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalji marketa</h2>
+
+@using (Html.BeginForm("Save", "Markets"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.MarketId)
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "Please fix the following errors.", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.SifraMarketa, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SifraMarketa, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SifraMarketa, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Adresa, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Adresa, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Adresa, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Naziv, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Naziv, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Naziv, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <th class="text-center" width="100">Dan</th>
+            <th class="text-center" width="200">Početak</th>
+            <th class="text-center" width="200">Kraj</th>
+            <th class="text-center" width="600"></th>
+        </tr>
+        <tr>
+            <td>
+                <label class="control-label col-md-2">Ponedeljak</label>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PonedeljakPocetakRadnogVremena, "{0: HH:mm}", new { htmlAttributes = new { @class = "form-control", @type = "time", @step = "300" } })
+                </div>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PonedeljakKrajRadnogVremena, "{0: c}", new { htmlAttributes = new { @class = "form-control", @type = "time", @step = "300" } })
+                </div>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.PonedeljakPocetakRadnogVremena, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.PonedeljakKrajRadnogVremena, "", new { @class = "text-danger" })
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label class="control-label col-md-2">Utorak</label>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UtorakPocetakRadnogVremena, @"{0: hh\:mm}", new { htmlAttributes = new { @class = "form-control", @value = "07:00", @step = "300" } })
+                </div>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UtorakKrajRadnogVremena, new { htmlAttributes = new { @class = "form-control", @type = "time", @step = "300" } })
+                </div>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.UtorakPocetakRadnogVremena, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.UtorakKrajRadnogVremena, "", new { @class = "text-danger" })
+                </div>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label class="control-label col-md-2">Sreda</label>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SredaPocetakRadnogVremena, "{0:HH:mm}", new { htmlAttributes = new { @class = "form-control", @type = "time", @step = "300" } })
+                </div>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SredaKrajRadnogVremena, new { htmlAttributes = new { @class = "form-control", @type = "time", @step = "300" } })
+                </div>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.SredaPocetakRadnogVremena, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.SredaKrajRadnogVremena, "", new { @class = "text-danger" })
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label class="control-label col-md-2">Četvrtak</label>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CetvrtakPocetakRadnogVremena, new { htmlAttributes = new { @class = "form-control", @type = "time", @step = "300" } })
+                </div>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CetvrtakKrajRadnogVremena, new { htmlAttributes = new { @class = "form-control", @type = "time", @step = "300" } })
+                </div>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.CetvrtakPocetakRadnogVremena, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.CetvrtakKrajRadnogVremena, "", new { @class = "text-danger" })
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="control-label col-md-2">Petak</label>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PetakPocetakRadnogVremena, new { htmlAttributes = new { @class = "form-control", @type = "time", @step = "300" } })
+                </div>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PetakKrajRadnogVremena, new { htmlAttributes = new { @class = "form-control", @type = "time", @step = "300" } })
+                </div>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.PetakPocetakRadnogVremena, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.PetakKrajRadnogVremena, "", new { @class = "text-danger" })
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="control-label col-md-2">Subota</label>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SubotaPocetakRadnogVremena, new { htmlAttributes = new { @class = "form-control", @type = "time", @step = "300" } })
+                </div>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SubotaKrajRadnogVremena, new { htmlAttributes = new { @class = "form-control", @type = "time", @step = "300" } })
+                </div>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.SubotaPocetakRadnogVremena, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.SubotaKrajRadnogVremena, "", new { @class = "text-danger" })
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label class="control-label col-md-2">Nedelja</label>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NedeljaPocetakRadnogVremena, new { htmlAttributes = new { @class = "form-control", @type = "time", @step = "300" } })
+                </div>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NedeljaKrajRadnogVremena, new { htmlAttributes = new { @class = "form-control", @type = "time", @step = "300" } })
+                </div>
+            </td>
+            <td>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.NedeljaPocetakRadnogVremena, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.NedeljaKrajRadnogVremena, "", new { @class = "text-danger" })
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Sačuvaj" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Povratak na listu marketa", "Index", "", new { @class = "btn btn-secondary"})
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
