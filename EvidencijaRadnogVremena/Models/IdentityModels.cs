@@ -24,6 +24,10 @@ namespace EvidencijaRadnogVremena.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Configuration.ProxyCreationEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
+
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, EvidencijaRadnogVremena.Migrations.Configuration>());
         }
 
         public static ApplicationDbContext Create()

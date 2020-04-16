@@ -508,6 +508,9 @@
     <EmbeddedResource Include="Migrations\202004121147200_UpdateBojaWorker.resx">
       <DependentUpon>202004121147200_UpdateBojaWorker.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004121745285_Account.resx">
+      <DependentUpon>202004121745285_Account.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004131908142_NedeljniPlan.resx">
       <DependentUpon>202004131908142_NedeljniPlan.cs</DependentUpon>
     </EmbeddedResource>
