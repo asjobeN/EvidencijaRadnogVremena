@@ -1,0 +1,53 @@
+﻿@model IEnumerable<EvidencijaRadnogVremena.Models.Worker>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Spisak radnika</h2>
+
+<p>
+    @Html.ActionLink("Dodaj novog radnika", "Create", "", new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Market.SifraMarketa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SifraRadnika)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImePrezime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Uloga)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Market.SifraMarketa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SifraRadnika)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImePrezime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Uloga)
+            </td>
+            <td>
+                @Html.ActionLink("Izmeni", "Edit", new { id = item.RadnikId }) |
+                @Html.ActionLink("Detalji", "Details", new { id = item.RadnikId }) |
+                @Html.ActionLink("Obriši", "Delete", new { id = item.RadnikId })
+            </td>
+        </tr>
+    }
+
+</table>

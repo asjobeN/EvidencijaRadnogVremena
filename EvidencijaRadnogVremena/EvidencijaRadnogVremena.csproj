@@ -485,6 +485,7 @@
     <Content Include="Views\NedeljniPlans\Details.cshtml" />
     <Content Include="Views\NedeljniPlans\Edit.cshtml" />
     <Content Include="Views\NedeljniPlans\Index.cshtml" />
+    <Content Include="Views\NedeljniPlans\NedeljniPlanForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
