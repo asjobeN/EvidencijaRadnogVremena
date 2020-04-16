@@ -1,0 +1,127 @@
+﻿@model EvidencijaRadnogVremena.Models.Market
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalji marketa</h2>
+<div class="row">
+    <div class="col-md-4">
+        <h4 class="btn btn-outline-warning">TODO: Dodati listu radnika</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.SifraMarketa)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SifraMarketa)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Adresa)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Adresa)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Naziv)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PonedeljakRadnoVreme)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PonedeljakRadnoVreme)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UtorakRadnoVreme)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UtorakRadnoVreme)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SredaRadnoVreme)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SredaRadnoVreme)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CetvrtakRadnoVreme)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CetvrtakRadnoVreme)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PetakRadnoVreme)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PetakRadnoVreme)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubotaRadnoVreme)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubotaRadnoVreme)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NedeljaRadnoVreme)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NedeljaRadnoVreme)
+            </dd>
+        </dl>
+    </div>
+    <div class="col-md-8">
+        <h4>Radnici</h4>
+        <table class="table">
+            @foreach (var item in Model.Radnici)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SifraRadnika)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImePrezime)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Izmeni", "Edit", new { id = item.RadnikId }) |
+                        @Html.ActionLink("Detalji", "Details", new { id = item.RadnikId }) |
+                        @Html.ActionLink("Obriši", "Delete", new { id = item.RadnikId })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>
+
+<p>
+    @Html.ActionLink("Izmeni", "Edit", new { id = Model.MarketId }, new { @class = "btn btn-primary" }) | @Html.ActionLink("Povratak na listu marketa", "Index", "", new { @class = "btn btn-secondary" })
+</p>

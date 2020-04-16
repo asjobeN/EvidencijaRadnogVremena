@@ -9,7 +9,8 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationDataLossAllowed = false;
             ContextKey = "EvidencijaRadnogVremena.Models.ApplicationDbContext";
         }
 

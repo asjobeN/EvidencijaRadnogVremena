@@ -1,0 +1,56 @@
+﻿@model EvidencijaRadnogVremena.Models.Worker
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalji radnika</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Market.SifraMarketa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Market.SifraMarketa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SifraRadnika)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SifraRadnika)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImePrezime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImePrezime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Uloga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uloga)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Boja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Boja)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Izmeni", "Edit", new { id = Model.RadnikId }) |
+    @Html.ActionLink("Povratak na listu ranika", "Index")
+</p>
