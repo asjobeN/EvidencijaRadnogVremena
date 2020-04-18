@@ -126,6 +126,11 @@ namespace EvidencijaRadnogVremena.Controllers
             return RedirectToAction("Index");
         }
 
+        private List<Market> GetMarketiFromDB()
+        {
+            return db.Markets.ToList();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

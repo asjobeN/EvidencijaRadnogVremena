@@ -6,7 +6,6 @@
 
 <h2>Detalji nedeljnog plana</h2>
 
-
 @using (Html.BeginForm("Save", "NedeljniPlans"))
 {
     @Html.AntiForgeryToken()
@@ -46,7 +45,6 @@
     </div>
 </div>
 }
-
 <div>
     @Html.ActionLink("Povratak na listu", "Index", "", new { @class = "btn btn-secondary" })
 </div>

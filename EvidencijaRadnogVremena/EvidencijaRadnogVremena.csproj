@@ -275,6 +275,14 @@
     <Compile Include="Migrations\202004131908142_NedeljniPlan.designer.cs">
       <DependentUpon>202004131908142_NedeljniPlan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004171905129_NedeljniPlan1.cs" />
+    <Compile Include="Migrations\202004171905129_NedeljniPlan1.designer.cs">
+      <DependentUpon>202004171905129_NedeljniPlan1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004172052490_NedeljniPlanBrisanje.cs" />
+    <Compile Include="Migrations\202004172052490_NedeljniPlanBrisanje.designer.cs">
+      <DependentUpon>202004172052490_NedeljniPlanBrisanje.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="Models\BusinessAction.cs" />
@@ -514,6 +522,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004131908142_NedeljniPlan.resx">
       <DependentUpon>202004131908142_NedeljniPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004171905129_NedeljniPlan1.resx">
+      <DependentUpon>202004171905129_NedeljniPlan1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004172052490_NedeljniPlanBrisanje.resx">
+      <DependentUpon>202004172052490_NedeljniPlanBrisanje.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>

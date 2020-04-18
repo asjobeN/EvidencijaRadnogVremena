@@ -14,12 +14,18 @@ namespace EvidencijaRadnogVremena.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: NedeljniPlans
+        //GET: NedeljniPlans
         public ActionResult Index()
         {
             ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa");
-            //var nedeljniPlan = db.NedeljniPlans.Include(r => r.MarketId);
             return View(db.NedeljniPlans.ToList());
+        }
+        [HttpPost]
+        public ActionResult Index(int? MarketId)
+        {        
+            ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa");           
+            var nedeljniPlan = db.NedeljniPlans.Where(r => r.MarketId== MarketId).ToList();
+            return View(nedeljniPlan);
         }
 
         // GET: NedeljniPlans/Details/5
@@ -41,6 +47,14 @@ namespace EvidencijaRadnogVremena.Controllers
         public ActionResult Create()
         {
             ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa");
+            ViewBag.ListaRadnika = new SelectList(db.Workers, "RadnikId", "SifraRadnika");
+            return View("NedeljniPlanForm", new NedeljniPlan());
+        }
+        [HttpPost]
+        public ActionResult Create(int MarketId)
+        {
+            ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa");
+            ViewBag.ListaRadnika = new SelectList(db.Workers, "RadnikId", "SifraRadnika");
             return View("NedeljniPlanForm", new NedeljniPlan());
         }
 
@@ -148,6 +162,7 @@ namespace EvidencijaRadnogVremena.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        
 
         protected override void Dispose(bool disposing)
         {
