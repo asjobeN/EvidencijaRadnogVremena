@@ -23,9 +23,11 @@ namespace EvidencijaRadnogVremena
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/font-awesome.min.css",
                       "~/Content/stylish-portfolio.min.css",
-                      "~/Content/bootstrap-yeti.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/site.css"
+                      ));
         }
     }
 }

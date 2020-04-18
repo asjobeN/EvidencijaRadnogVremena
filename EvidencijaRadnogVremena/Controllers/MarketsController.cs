@@ -27,7 +27,7 @@ namespace EvidencijaRadnogVremena.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Market market = db.Markets.Find(id);
+            Market market = db.Markets.Include(m=>m.Radnici).SingleOrDefault(m=>m.MarketId == id);
             if (market == null)
             {
                 return HttpNotFound();
