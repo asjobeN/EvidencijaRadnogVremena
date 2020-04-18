@@ -19,7 +19,7 @@ namespace EvidencijaRadnogVremena.BusinessLogic
             }
             if (akcija == "checkOut")
             {
-                if (radnik.TipRada == Enums.TipRadaEnum.Neradi)
+                if (radnik.TipRada == Enums.TipRadaEnum.NeRadi)
                 {
                     return "disabled";
                 }
@@ -30,7 +30,7 @@ namespace EvidencijaRadnogVremena.BusinessLogic
                 {
                     return "disabled";
                 }
-                if (radnik.TipRada == Enums.TipRadaEnum.Neradi)
+                if (radnik.TipRada == Enums.TipRadaEnum.NeRadi)
                 {
                     return "disabled";
                 }
@@ -41,7 +41,7 @@ namespace EvidencijaRadnogVremena.BusinessLogic
                 {
                     return "disabled";
                 }
-                if (radnik.TipRada == Enums.TipRadaEnum.Neradi)
+                if (radnik.TipRada == Enums.TipRadaEnum.NeRadi)
                 {
                     return "disabled";
                 }

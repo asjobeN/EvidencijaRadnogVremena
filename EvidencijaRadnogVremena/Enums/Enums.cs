@@ -21,7 +21,7 @@ namespace EvidencijaRadnogVremena.Enums
     public enum TipRadaEnum
     {
         [Description("Not working")]
-        Neradi,
+        NeRadi,
 
         [Description("Working")]
         Radi,

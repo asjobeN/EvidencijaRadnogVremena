@@ -30,12 +30,16 @@ namespace EvidencijaRadnogVremena.BusinessLogic
         {
             using (var context = new ApplicationDbContext())
             {
-                IEnumerable<Worker> radnici = context.Workers;//.Where(x => x.MarketId == market.MarketId);
+                IEnumerable<Worker> radnici;
+                if (market == null)
+                    radnici = context.Workers;
+                else
+                    radnici = context.Workers.AsEnumerable().Where(x => x.MarketId == market.MarketId);
 
 
                 foreach (var item in radnici)
                 {
-                    Enums.TipRadaEnum tipRada = Enums.TipRadaEnum.Neradi;
+                    Enums.TipRadaEnum tipRada = Enums.TipRadaEnum.NeRadi;
                     var lastAction = context.BusinessActions.AsEnumerable().LastOrDefault<BusinessAction>(x => x.Date.ToShortDateString() == DateTime.Now.ToShortDateString()
                                                                      && x.RadnikId == item.RadnikId);
                     if (lastAction != null)

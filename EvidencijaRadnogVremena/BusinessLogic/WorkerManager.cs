@@ -73,13 +73,13 @@ namespace EvidencijaRadnogVremena.BusinessLogic
                                                                                     && x.TipRada == Enums.TipRadaEnum.Radi);
                 BusinessAction lastAction = context.BusinessActions.AsEnumerable().LastOrDefault(x => x.RadnikId == model.RadnikId
                                                                                     && x.Date.ToShortDateString() == DateTime.Now.ToShortDateString());
-                if (lastActionWorking != null && lastAction.TipRada != Enums.TipRadaEnum.Neradi)
+                if (lastActionWorking != null && lastAction.TipRada != Enums.TipRadaEnum.NeRadi)
                 {
                     context.BusinessActions.Add(new BusinessAction()
                     {
                         RadnikId = model.RadnikId,
                         Date = DateTime.Now,
-                        TipRada = Enums.TipRadaEnum.Neradi,
+                        TipRada = Enums.TipRadaEnum.NeRadi,
                         LocalMachine = model.LocalMachine
                     });
                     context.SaveChanges();
@@ -127,14 +127,32 @@ namespace EvidencijaRadnogVremena.BusinessLogic
             }
         }
 
+        //internal static Task CreateRegisteredWorker(ViewModel.RegisterViewModel model)
+        //{
+        //    using (var context = new ApplicationDbContext())
+        //    {
+        //        context.Workers.Add(new Worker() { Username = model.Username, Password = model.Password, ConfirmPassword = model.Password, Email = model.Email });
+        //        context.SaveChanges();
+        //    }
+        //    return Task.Factory.StartNew(() => {  });
+        //}
+
         internal static Task CreateRegisteredWorker(ViewModel.RegisterViewModel model)
         {
             using (var context = new ApplicationDbContext())
             {
-                context.Workers.Add(new Worker() { Username = model.Username, Password = model.Password, ConfirmPassword = model.Password, Email = model.Email });
+                context.Workers.Add(new Worker()
+                {
+                    Username = model.Username,
+                    Password = model.Password,
+                    ConfirmPassword = model.Password,
+                    Uloga = Enums.UlogaEnum.Administrator,
+                    ImePrezime = model.Username,
+                    Email = model.Email
+                });
                 context.SaveChanges();
             }
-            return Task.Factory.StartNew(() => {  });
+            return Task.Factory.StartNew(() => { });
         }
     }
 }
