@@ -4,7 +4,15 @@
     ViewBag.Title = "Detalji radnika";
 }
 
-<h2>Detalji radnika</h2>
+<div class="row">
+    <div class="col-6"><h2>Detalji radnika</h2></div>
+    <div class="col-6">
+        <span class="float-right">
+            @Html.ActionLink(" Povratak na listu radnika", "Index", "", new { @class = "btn btn-secondary fa fa-undo" })
+        </span>
+    </div>
+</div>
+
 
 
 @using (Html.BeginForm("Save", "Workers"))
@@ -80,15 +88,11 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Sačuvaj" class="btn btn-primary" />
+                <input type="submit" value="Sačuvaj" class="btn btn-primary btn-block" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Povratak na listu", "Index", "", new { @class = "btn btn-secondary" })
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

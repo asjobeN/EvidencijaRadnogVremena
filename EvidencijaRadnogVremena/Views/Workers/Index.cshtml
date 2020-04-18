@@ -4,13 +4,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Spisak radnika</h2>
+<div class="row">
+    <div class="col-6"><h2>Spisak radnika</h2></div>
+    <div class="col-6">
+        <span class="float-right">
+            @Html.ActionLink(" Dodaj novog radnika", "Create", "", new { @class = "btn btn-primary fa fa-plus" })
+        </span>
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Dodaj novog radnika", "Create", "", new { @class = "btn btn-primary" })
-</p>
-<table class="table">
-
+<table class="table table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Market.SifraMarketa)
@@ -43,11 +46,10 @@
                 @Html.DisplayFor(modelItem => item.Uloga)
             </td>
             <td>
-                @Html.ActionLink("Izmeni", "Edit", new { id = item.RadnikId }) |
-                @Html.ActionLink("Detalji", "Details", new { id = item.RadnikId }) |
-                @Html.ActionLink("Obriši", "Delete", new { id = item.RadnikId })
+                @Html.ActionLink(" Izmeni", "Edit", new { id = item.RadnikId }, new { @class = "btn-sm btn-success fa fa-pencil-square-o" })
+                @Html.ActionLink(" Detalji", "Details", new { id = item.RadnikId }, new { @class = "btn-sm btn-info fa fa-list-alt" })
+                @Html.ActionLink(" Obriši", "Delete", new { id = item.RadnikId }, new { @class = "btn-sm btn-danger fa fa-trash-o" })
             </td>
         </tr>
     }
-
 </table>
