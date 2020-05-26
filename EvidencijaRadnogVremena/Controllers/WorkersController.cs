@@ -87,7 +87,10 @@ namespace EvidencijaRadnogVremena.Controllers
                 return HttpNotFound();
             }
             ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa", radnik.MarketId);
-            return View("WorkerForm", radnik);
+            return View("Edit", new UpdateWorkerViewModel
+            { Market = radnik.Market, Argb = radnik.Argb, Boja = radnik.Boja, Email = radnik.Email, ImePrezime = radnik.ImePrezime, MarketId = radnik.MarketId, Pasivan = radnik.Pasivan, 
+                RadnikId = radnik.RadnikId, SifraRadnika = radnik.SifraRadnika, Uloga = radnik.Uloga, Username = radnik.Username }
+            );
         }
 
         // POST: Workers/Edit/5
@@ -95,16 +98,33 @@ namespace EvidencijaRadnogVremena.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RadnikId,SifraRadnika,ImePrezime,MarketId,Uloga")] Worker radnik)
+        public ActionResult Edit([Bind(Include = "Argb,RadnikId,SifraRadnika,ImePrezime,MarketId,Uloga,Boja,Email,Pasivan,Username")] UpdateWorkerViewModel radnik)
         {
-            if (ModelState.IsValid)
+            var current = db.Workers.FirstOrDefault(p => p.RadnikId == radnik.RadnikId);
+            if (current == null)
+                return HttpNotFound();
+
+            if (!ModelState.IsValid)
             {
-                db.Entry(radnik).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa", radnik.MarketId);
+                foreach (var prop in ModelState.Where(prop => prop.Value.Errors.Any()))
+                {
+                    Console.WriteLine(prop.Key, prop.Value.Errors);
+                }
+                return View("Edit", radnik);
             }
-            ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa", radnik.MarketId);
-            return View("WorkerForm", radnik);
+            //current.Argb = radnik.Argb;
+            current.ConfirmPassword = current.Password;
+            current.Email = radnik.Email;
+            current.Pasivan = radnik.Pasivan;
+            current.SifraRadnika = radnik.SifraRadnika;
+            current.ImePrezime = radnik.ImePrezime;
+            current.MarketId = radnik.MarketId;
+            current.Boja = radnik.Boja;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+            //ViewBag.MarketId = new SelectList(db.Markets, "MarketId", "SifraMarketa", radnik.MarketId);
+            //return View("Edit", radnik);
         }
 
         // GET: Workers/Delete/5

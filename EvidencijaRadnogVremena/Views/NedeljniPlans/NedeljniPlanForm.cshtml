@@ -4,50 +4,288 @@
     ViewBag.Title = "Detalji nedeljnog plana";
 }
 
-<h2>Detalji nedeljnog plana</h2>
+<style>
+    #selectable .ui-selecting {
+        background: #3498DB !important;
+    }
 
+    table{
+        font-size: 10px !important;
+        
+    }
+    th {
+        min-width: 100px;
+    }
+    table.fit td {
+        text-align: center;
+        font-family:'Courier New'!important;
+    }
+
+    .plan {
+        max-width: 8px;
+        padding: 0px 1px;
+        margin: 0px 1px;
+    }
+
+    .tscroll {
+        overflow-x: scroll;
+    }
+
+    .tscroll table th:first-child {
+        position: sticky;
+        left: 0;
+        background-color: #FFFFFF;
+    }
+</style>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+    function calculateColumn(index) {
+            var total = 0;
+            $('table tr').each(function () {
+                var value = $('td input', this).eq(index).attr("value");
+                if (value == "Radi")
+                    total += 1;
+               
+            });
+        total = total / 2.0;
+         $('table tfoot th').eq(index + 1).text('Total: ' + total);
+        }
+
+    $.noConflict();
+    jQuery(function ($) {
+        $('#selectable').selectable({
+            filter: "td",
+            selected: function (event, ui) {
+                var colorWorkType = "#FFFFFF";
+                if ($("input[type='radio'].workTypeClass").is(':checked')) {
+                    var workType = $("input[type='radio'].workTypeClass:checked").val();
+                }
+                var el = $(ui.selected);
+
+                $.each(el, function (i, val) {
+                    if (workType == "Radi") {
+                        var index = el.index();                      
+                        //colorWorkType = el.closest('table').find('thead tr th').eq(index + 7).attr("style").split(':')[1].trim();
+                        colorWorkType = el.attr("boja");
+                    } else if (workType == "NeRadi") {
+                        colorWorkType = "#ECF0F1";
+                    } else if (workType == "Pauza") {
+                        colorWorkType = "#7F8C8D";
+                    } else {
+                        colorWorkType = "#F1C40F";
+                    }
+                    el.closest('td').css("background-color", colorWorkType);
+                    $('input', val).each(function () {
+                        $(this).css("background-color", colorWorkType);
+                        $(this).css("color", "#FFFFFF");
+                        //$(this).val(workType);
+                        $(this).attr("value", workType);
+                        //calculateColumn(index-1);
+                    });    
+                    
+                });
+            }
+        });
+    });
+
+    
+</script>
+
+<div class="row">
+    <div class="col-6"><h2>Detalji nedeljnog plana</h2></div>
+    <div class="col-6">
+        <span class="float-right">
+            @Html.ActionLink(" Povratak na listu", "Index", "", new { @class = "btn btn-secondary fa fa-undo" })
+        </span>
+    </div>
+</div>
+
+<hr />
+
+@{var items = Model.DnevniPlanovi;}
 @using (Html.BeginForm("Save", "NedeljniPlans"))
 {
     @Html.AntiForgeryToken()
+    for (int i = 0; i < Model.DnevniPlanovi.Count; i++)
+    {
+        @Html.HiddenFor(m => m.DnevniPlanovi[i].DnevniPlanId)
+    }
+    for (int i = 0; i < Model.DnevniPlanovi.Count; i++)
+    {
+        @Html.HiddenFor(m => m.DnevniPlanovi[i].Datum)
+    }
+    for (int i = 0; i < Model.DnevniPlanovi.Count; i++)
+    {
+        @Html.HiddenFor(m => m.DnevniPlanovi[i].RadnikId)
+    }
+    for (int i = 0; i < Model.DnevniPlanovi.Count; i++)
+    {
+        @Html.HiddenFor(m => m.DnevniPlanovi[i].NedeljniPlanId)
+    }
     @Html.HiddenFor(m => m.NedeljniPlanId)
-<div class="form-horizontal">
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.DatumOd, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.HiddenFor(m => m.DatumOd)
+    @Html.HiddenFor(m => m.DatumDo)
+    @Html.HiddenFor(m => m.MarketId)
+    @Html.HiddenFor(m => m.Market)
+
+    <div class="form-group row">
+        @Html.LabelFor(model => model.Period, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.DatumOd, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.DatumOd, "", new { @class = "text-danger" })
+            @Html.DisplayFor(model => model.Period, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Period, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.DatumDo, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="form-group row">
+        @Html.LabelFor(model => model.MarketId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.DatumDo, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.DatumDo, "", new { @class = "text-danger" })
+            @Html.DisplayFor(model => model.Market.SifraMarketa, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Market.SifraMarketa, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.MarketId, "MarketId", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("MarketId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.MarketId, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="col-md-8">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-primary">
+                    <input type="radio" class="workTypeClass" name="workType" value="Radi" checked="checked"> Radi
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" class="workTypeClass" name="workType" value="NeRadi"> Ne radi
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" class="workTypeClass" name="workType" value="Pauza"> Pauza
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" class="workTypeClass" name="workType" value="Odmor"> Odmor
+                </label>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <span class="float-right">
+                @Html.ActionLink(" Dodaj zamenu", "AddWorker", "NedeljniPlans", new { id = Model.NedeljniPlanId }, new { @class = "btn btn-primary fa fa-plus-square" })
+            </span>
         </div>
     </div>
+    <br />
 
+    <div class="row tscroll">
+        <div class="col-md-12">
+            <table id="selectable" class="table table-bordered ui-selectable fit">
+                <thead>
+                    @{var brojRadnika = Model.DnevniPlanovi.Count / 6;}
+                    <tr>
+                        <th scope="col"></th>
+                        @for (DateTime datum = Model.DatumOd; datum < Model.DatumDo; datum = datum.AddDays(1))
+                        {
+                            <th scope="col" colspan=@brojRadnika>
+                                @datum.DayOfWeek - @datum.ToShortDateString()
+                            </th>
+                        }
+                    </tr>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Sačuvaj" class="btn btn-primary" />
+                    <tr>
+                        <th scope="row"></th>
+                        @for (int j = 0; j < 6; j++)
+                        {
+                            for (int i = 0; i < brojRadnika; i++)
+                            {
+                                var c = @Model.Market.Radnici[i].Boja;
+                                var radnik = @Model.Market.Radnici.Single(r => r.RadnikId == Model.DnevniPlanovi[i].RadnikId).ImePrezime;
+                                string col = $"#{c.R:X2}{c.G:X2}{c.B:X2}";
+                                <th scope="row" style="background-color: @col; color:#FFFFFF">@radnik</th>
+                            }
+                        }
+                    </tr>
+
+                </thead>
+                <tbody>
+                    @*@foreach (var key in dnevniPlan.RadnaVremena.Keys) -----------------OVAJ DEO RADI
+        {
+            <tr>
+                <th class="ui-widget-content ui-selectee">
+                    @key.ToString()
+                </th>
+                @for (int j = 0; j < Model.DnevniPlanovi.Count; j++)
+                {
+                    <td class="ui-selectee">
+                        @Html.EditorFor(model => Model.DnevniPlanovi[j].RadnaVremena[key], new { htmlAttributes = new { @class = "ui-widget-content border-0 plan", @readonly = "readonly" } })
+                    </td>
+                }
+            </tr>
+        }*@
+                    @{var radnaVremena = typeof(EvidencijaRadnogVremena.Models.DnevniPlan).GetProperties().Where(prop => prop.PropertyType.Name.Equals("TipRadaEnum") && prop.Name.StartsWith("RV"));}
+                    @foreach (var rv in radnaVremena)
+                    {
+
+                        <tr>
+                            <th>
+                                @rv.CustomAttributes.First(at => at.AttributeType.Name.Equals("DisplayAttribute")).NamedArguments[0].TypedValue
+                            </th>
+                            @for (int j = 0; j < Model.DnevniPlanovi.Count; j++)
+                            {
+                                var c = Model.Market.Radnici.First(rad => rad.RadnikId == Model.DnevniPlanovi[j].RadnikId).Boja;
+                                string col = $"#{c.R:X2}{c.G:X2}{c.B:X2}";
+
+                                if (Model.DnevniPlanovi[j][rv.Name] == EvidencijaRadnogVremena.Enums.TipRadaEnum.Radi)
+                                {
+                                    <td class="ui-selectee" style="background-color: @col; color: #FFFFFF" ; boja=@col>
+                                        @Html.EditorFor(model => Model.DnevniPlanovi[j][rv.Name], new { htmlAttributes = new { @class = "ui-widget-content border-0 plan", @readonly = "readonly", style = $"background-color: {col} ; color: #FFFFFF" } })
+                                    </td>
+                                }
+                                else if (Model.DnevniPlanovi[j][rv.Name] == EvidencijaRadnogVremena.Enums.TipRadaEnum.NeRadi)
+                                {
+                                    <td class="ui-selectee" style="background-color: #ECF0F1; color: #FFFFFF" ; boja=@col>
+                                        @Html.EditorFor(model => Model.DnevniPlanovi[j][rv.Name], new { htmlAttributes = new { @class = "ui-widget-content border-0 plan", @readonly = "readonly", style = $"background-color: #ECF0F1; color: #FFFFFF" } })
+                                    </td>
+                                }
+                                else if (Model.DnevniPlanovi[j][rv.Name] == EvidencijaRadnogVremena.Enums.TipRadaEnum.Pauza)
+                                {
+                                    <td class="ui-selectee" style="background-color: #7F8C8D; color: #FFFFFF" ; boja=@col>
+                                        @Html.EditorFor(model => Model.DnevniPlanovi[j][rv.Name], new { htmlAttributes = new { @class = "ui-widget-content border-0 plan", @readonly = "readonly", style = $"background-color:#7F8C8D; color: #FFFFFF" } })
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="ui-selectee" style="background-color: #F1C40F; color: #FFFFFF" ; boja=@col>
+                                        @Html.EditorFor(model => Model.DnevniPlanovi[j][rv.Name], new { htmlAttributes = new { @class = "ui-widget-content border-0 plan", @readonly = "readonly", style = $"background-color:#F1C40F; color: #FFFFFF" } })
+                                    </td>
+                                }
+
+                            }
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>
+                            Ukupno sati
+                        </th>
+                        @for (int i = 0; i < Model.DnevniPlanovi.Count; i++)
+                        {
+                            <th>
+                                @Html.DisplayFor(model => model.DnevniPlanovi[i].BrojSati, new { htmlAttributes = new { @class = "ui-widget-content" } })
+                            </th>
+                        }
+
+                    </tr>
+                </tfoot>                
+            </table>
         </div>
     </div>
-</div>
+    <br />
+    <div class="form-group row">
+        <div class="col-md-offset-2 col-md-2">
+            <button type="submit" class="btn btn-primary btn-block">
+                <i class="fa fa-save"></i> Sačuvaj
+            </button>
+        </div>
+    </div>
 }
-<div>
-    @Html.ActionLink("Povratak na listu", "Index", "", new { @class = "btn btn-secondary" })
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

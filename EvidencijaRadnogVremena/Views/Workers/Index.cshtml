@@ -5,8 +5,12 @@
 }
 
 <div class="row">
-    <div class="col-6"><h2>Spisak radnika</h2></div>
-    <div class="col-6">
+    <div class="col-4"><h2>Spisak radnika</h2></div>
+    <div class="col-4">
+        <input class="form-control" id="myInput" type="text" placeholder="Pretraga...">
+    </div>
+
+    <div class="col-4">
         <span class="float-right">
             @Html.ActionLink(" Dodaj novog radnika", "Create", "", new { @class = "btn btn-primary fa fa-plus" })
         </span>
@@ -14,42 +18,59 @@
 </div>
 
 <table class="table table-hover">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Market.SifraMarketa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SifraRadnika)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImePrezime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Uloga)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Market.SifraMarketa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SifraRadnika)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImePrezime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Uloga)
-            </td>
-            <td>
-                @Html.ActionLink(" Izmeni", "Edit", new { id = item.RadnikId }, new { @class = "btn-sm btn-success fa fa-pencil-square-o" })
-                @Html.ActionLink(" Detalji", "Details", new { id = item.RadnikId }, new { @class = "btn-sm btn-info fa fa-list-alt" })
-                @Html.ActionLink(" Obriši", "Delete", new { id = item.RadnikId }, new { @class = "btn-sm btn-danger fa fa-trash-o" })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Market.SifraMarketa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SifraRadnika)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImePrezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Uloga)
+            </th>
+            <th>
+                Akcije
+            </th>
         </tr>
-    }
+    </thead>
+    <tbody id="myTable">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Market.SifraMarketa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SifraRadnika)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImePrezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Uloga)
+                </td>
+                <td>
+                    @Html.ActionLink(" Izmeni", "Edit", new { id = item.RadnikId }, new { @class = "btn-sm btn-success fa fa-pencil-square-o" })
+                    @Html.ActionLink(" Detalji", "Details", new { id = item.RadnikId }, new { @class = "btn-sm btn-info fa fa-list-alt" })
+                    @Html.ActionLink(" Obriši", "Delete", new { id = item.RadnikId }, new { @class = "btn-sm btn-danger fa fa-trash-o" })
+                </td>
+            </tr>
+        }
+    </tbodyid="myTable">
 </table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>

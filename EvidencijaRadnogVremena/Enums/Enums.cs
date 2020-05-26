@@ -18,27 +18,24 @@ namespace EvidencijaRadnogVremena.Enums
         Administrator = 2
     }
 
-    public enum TipRadaEnum
+    public enum TipRadaEnum : byte
     {
         [Description("Not working")]
-        NeRadi,
+        NeRadi = 0,
 
         [Description("Working")]
-        Radi,
-
-        [Description("Holiday")]
-        Odmor,
-
-        [Description("Sick leave")]
-        Bolovanje,
-
-        [Description("Substitution")]
-        Zamena,
+        Radi = 1,
 
         [Description("Break")]
-        Pauza,
+        Pauza = 2,
+        
+        [Description("Holiday")]
+        Odmor = 3,
+
+        [Description("Sick leave")]
+        Bolovanje = 4,
 
         [Description("Other")]
-        Ostalo
+        Ostalo = 99
     }
 }

@@ -26,7 +26,7 @@ namespace EvidencijaRadnogVremena
                       "~/Content/font-awesome.min.css",
                       "~/Content/stylish-portfolio.min.css",
                       "~/Content/bootstrap.min.css",
-                      "~/Content/site.css"
+                      "~/Content/Site.css"
                       ));
         }
     }

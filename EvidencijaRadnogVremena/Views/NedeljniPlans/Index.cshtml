@@ -1,66 +1,87 @@
-﻿@model IEnumerable<EvidencijaRadnogVremena.Models.NedeljniPlan>
+﻿@model EvidencijaRadnogVremena.ViewModel.NedeljniPlanoviViewModel
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Nedeljni raspored za market</h2>
-<p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
 
-    @* @Html.DropDownList("MarketId", null, "Izaberite market", htmlAttributes: new { @class = "form-control", onchange = "SelectedIndexChanged()" })*@
-</p>
-
-<p>
-    <form action="/NedeljniPlans" method="post">
-        @using (Html.BeginForm("Index", "NedeljniPlans", FormMethod.Get))
-        {
-            <table class="table">
-                <tr>
-                    <td>@Html.DropDownList("MarketId", null, "Izaberite market", htmlAttributes: new { @class = "form-control" })</td>
-                    <td><input type="submit" value="Prikaži" class="btn btn-primary" /></td>
-                    <td>@Html.ActionLink("Dodaj novi nedeljni raspored", "Create", new { MarketId = 1 }, new { @class = "btn btn-primary" })</td>
-                </tr>
-            </table>
-        }
-
-    </form>
-</p>
+<div class="row">
+    <div class="col-6"><h2>Nedeljni rasporedi</h2></div>
+</div>
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DatumOd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DatumDo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MarketId)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
+@using (Html.BeginForm("Create", "NedeljniPlans"))
+{
+    @Html.AntiForgeryToken()
+
+    <div>@Html.DropDownListFor(m => m.MarketId, Model.Marketi, "Izaberite market", new { @class = "form-control" })</div>
+    <br />
+
+    <div>@Html.EditorFor(m => m.Nedelja, new { htmlAttributes = new { type = "week", @class = "form-control" } }) </div>
+    <br />
+
+    <div class="form-group row">
+        <div class="col-md-offset-6 col-md-6">
+            <button type="submit" class="btn btn-primary btn-block">
+                <i class="fa fa-save"></i> Dodaj novi nedeljni raspored
+            </button>
+        </div>
+    </div>
+
+    <br />
+}
+
+<input class="form-control" id="myInput" type="text" placeholder="Pretraga...">
+<br>
+
+<table class="table table-hover">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DatumOd)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DatumDo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MarketId)
-            </td>
-            <td>
-                @Html.ActionLink("Izmeni", "Edit", new { id = item.NedeljniPlanId }) |
-                @Html.ActionLink("Detalji", "Details", new { id = item.NedeljniPlanId }) |
-                @Html.ActionLink("Obriši", "Delete", new { id = item.NedeljniPlanId })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.NedeljniPlanovi.FirstOrDefault().DatumOd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NedeljniPlanovi.FirstOrDefault().DatumDo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NedeljniPlanovi.FirstOrDefault().Market.SifraMarketa)
+            </th>
+            <th>Akcije</th>
         </tr>
-    }
-
+    </thead>
+    <tbody id="myTable">
+        @foreach (var item in Model.NedeljniPlanovi)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatumOd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatumDo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Market.SifraMarketa)
+                </td>
+                <td>
+                    @Html.ActionLink(" Izmeni", "Edit", new { id = item.NedeljniPlanId }, new { @class = "btn-sm btn-success fa fa-pencil-square-o" })
+                    @Html.ActionLink(" Detalji", "Details", new { id = item.NedeljniPlanId }, new { @class = "btn-sm btn-info fa fa-list-alt" })
+                    @Html.ActionLink(" Obriši", "Delete", new { id = item.NedeljniPlanId }, new { @class = "btn-sm btn-danger fa fa-trash-o" })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
 

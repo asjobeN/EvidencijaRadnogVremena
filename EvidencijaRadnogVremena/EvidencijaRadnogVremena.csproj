@@ -283,6 +283,14 @@
     <Compile Include="Migrations\202004172052490_NedeljniPlanBrisanje.designer.cs">
       <DependentUpon>202004172052490_NedeljniPlanBrisanje.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005062155264_UpdateModelTest.cs" />
+    <Compile Include="Migrations\202005062155264_UpdateModelTest.designer.cs">
+      <DependentUpon>202005062155264_UpdateModelTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005150215315_UpdateModelRadnaVremena.cs" />
+    <Compile Include="Migrations\202005150215315_UpdateModelRadnaVremena.designer.cs">
+      <DependentUpon>202005150215315_UpdateModelRadnaVremena.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="Models\BusinessAction.cs" />
@@ -303,6 +311,8 @@
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\ManagerDashboardViewModel.cs" />
+    <Compile Include="ViewModel\NedeljniPlanoviViewModel.cs" />
+    <Compile Include="ViewModel\UpdateWorkerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -536,6 +546,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004172052490_NedeljniPlanBrisanje.resx">
       <DependentUpon>202004172052490_NedeljniPlanBrisanje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005062155264_UpdateModelTest.resx">
+      <DependentUpon>202005062155264_UpdateModelTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005150215315_UpdateModelRadnaVremena.resx">
+      <DependentUpon>202005150215315_UpdateModelRadnaVremena.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
