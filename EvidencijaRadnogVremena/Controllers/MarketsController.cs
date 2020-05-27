@@ -10,6 +10,7 @@ using EvidencijaRadnogVremena.Models;
 
 namespace EvidencijaRadnogVremena.Controllers
 {
+    [System.Web.Mvc.Authorize]
     public class MarketsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -12,6 +12,7 @@ using EvidencijaRadnogVremena.ViewModel;
 
 namespace EvidencijaRadnogVremena.Controllers
 {
+    [System.Web.Mvc.Authorize]
     public class NedeljniPlansController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
